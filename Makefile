@@ -1,26 +1,31 @@
-NAME = push_swap
-
+CHECKER = checker
+P_S = push_swap
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I./includes -I.
-
 LIBFT = ./libft/libft.a
 
-SRCFILE =
+CHKRSRC = src/checker/main.c
+
+P_SSRC =
+
+STCKSRC =
 
 
-TESTFILE =
-
-
-SRCDIRS = $(dir $(SRCFILE))
+SRCDIRS = $(dir $(CHKRSRC)) $(dir $(P_SSRC)) $(dir $(STCKSRC))
 OBJDIR = ./obj
 BINDIRS = $(addprefix $(OBJDIR)/, $(SRCDIRS))
-OBJECTS = $(addprefix $(OBJDIR)/, $(SRCFILE:.c=.o))
+CHKROBJS = $(addprefix $(OBJDIR)/, $(CHKRSRC:.c=.o))
+P_SOBJS = $(addprefix $(OBJDIR)/, $(P_SSRC:.c=.o))
+STCKOBJS = $(addprefix $(OBJDIR)/, $(STCKSRC:.c=.o))
 
 TEST = $(notdir $(basename $(SRCFILE)))
 
-all: $(NAME)
+all: $(CHECKER)
 
-$(NAME): $(OBJECTS) $(LIBFT)
+$(CHECKER): $(CHKROBJS) $(STCKOBJS) $(LIBFT)
+	gcc -g $^ $(INCLUDES) -o $@
+
+$(P_S): $(P_SOBJS) $(STCKOBJS) $(LIBFT)
 	gcc -g $^ $(INCLUDES) -o $@
 
 $(LIBFT):
@@ -28,21 +33,15 @@ $(LIBFT):
 
 $(OBJDIR)/%.o: %.c
 	@mkdir -p $(BINDIRS)
-	gcc $(CFLAGS) $(INCLUDES) -o $@ -c $<
-
-$(TEST): $(LIBFT)
-	gcc -g $(filter tests/%/test_$@.c, $(TESTFILE)) \
-	$(filter-out srcs/main/main.c ,$(SRCFILE)) \
-	$(INCLUDES) $^ -o test
+	gcc -g $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
 clean:
 	$(MAKE) clean -C ./libft
-	$(RM) $(OBJECTS)
 	$(RM) -rf $(OBJDIR)
 
 fclean:
 	$(MAKE) fclean -C ./libft
-	$(RM) $(OBJECTS) $(NAME)
+	$(RM) $(CHECKER) $(P_S)
 	$(RM) -rf $(OBJDIR)
 
 re: fclean all
