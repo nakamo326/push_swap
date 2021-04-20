@@ -15,5 +15,6 @@ typedef struct s_stack
 
 t_stack	**create_stack(char **argv, t_stack **top);
 void	print_stack(t_stack **top);
+void	free_stack(t_stack **top);
 
 #endif

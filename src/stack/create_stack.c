@@ -25,7 +25,7 @@ static t_stack	**add_newelm(t_stack **top, int value)
 	{
 		new->next = new;
 		new->prev = new;
-		top = malloc(sizeof(t_stack **));
+		top = malloc(sizeof(t_stack *));
 		*top = new;
 		return (top);
 	}
@@ -43,7 +43,7 @@ t_stack	**create_stack(char **argv, t_stack **top)
 {
 	long long	value;
 	int			i;
-	//t_list		**tmp;
+	t_stack		**tmp;
 
 	i = 1;
 	while (argv[i] != NULL)
@@ -51,14 +51,14 @@ t_stack	**create_stack(char **argv, t_stack **top)
 		value = ft_atoll(argv[i]);
 		if (value > INT_MAX || value < INT_MIN)
 		{
-			//free_stack(top);
+			free_stack(top);
 			return (NULL);
 		}
-		//tmp = top;
+		tmp = top;
 		top = add_newelm(top, (int)value);
 		if (top == NULL)
 		{
-			//free_stack(tmp);
+			free_stack(tmp);
 			return (NULL);
 		}
 		i++;
