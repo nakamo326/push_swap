@@ -42,7 +42,7 @@ bool	do_operation(char *line, t_stack ***a_top, t_stack ***b_top)
 	op = is_valid_op(line);
 	if (op == sa || op == sb || op == ss)
 		return (swap_ent(op, a_top, b_top));
-	else if (op == pa || op ==pb)
+	else if (op == pa || op == pb)
 		return (push_ent(op, a_top, b_top));
 	else if (op == ra || op == rb || op == rr)
 		return (rotate_ent(op, a_top, b_top));

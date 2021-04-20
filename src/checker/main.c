@@ -1,5 +1,11 @@
 #include "checker.h"
 
+static int	output_error(void)
+{
+	ft_putendl_fd("Error", 2);
+	return (EXIT_FAILURE);
+}
+
 static bool	is_valid_arg(char **argv)
 {
 	int	i;
@@ -23,7 +29,7 @@ static bool	is_valid_arg(char **argv)
 	return (true);
 }
 
-static char *read_line(void)
+static char	*read_line(void)
 {
 	char	*buf;
 	int		rc;
@@ -38,7 +44,8 @@ static char *read_line(void)
 
 void	run(t_stack **a_top, t_stack **b_top)
 {
-	char *line;
+	char	*line;
+
 	line = read_line();
 	if (line == NULL)
 		return ;
@@ -63,11 +70,10 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
 	if (!is_valid_arg(argv))
-	{
-		ft_putendl_fd("Error", 2);
-		exit(EXIT_FAILURE);
-	}
+		return (output_error());
 	a_top = create_stack(argv, a_top);
+	if (a_top == NULL)
+		return (output_error());
 	print_stack(a_top);
 	while (1)
 		run(a_top, b_top);

@@ -6,14 +6,14 @@
 # include <stdbool.h>
 # include <limits.h>
 # include "./libft/libft.h"
-typedef struct	s_stack
+typedef struct s_stack
 {
 	struct s_stack	*prev;
 	struct s_stack	*next;
 	int				val;
 }	t_stack;
 
-typedef enum	e_op
+typedef enum e_op
 {
 	err,
 	sa,

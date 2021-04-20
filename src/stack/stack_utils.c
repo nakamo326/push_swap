@@ -13,7 +13,6 @@ t_stack	*create_newelm(int value)
 	return (new);
 }
 
-
 void	free_stack(t_stack **top)
 {
 	t_stack	*s_ptr;
