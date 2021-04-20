@@ -21,11 +21,10 @@ static t_stack	**add_newelm(t_stack **top, int value)
 	new = create_newelm(value);
 	if (new == NULL)
 		return (NULL);
-	if (top == NULL)
+	if (*top == NULL)
 	{
 		new->next = new;
 		new->prev = new;
-		top = malloc(sizeof(t_stack *));
 		*top = new;
 		return (top);
 	}

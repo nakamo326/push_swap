@@ -6,15 +6,33 @@
 # include <stdbool.h>
 # include <limits.h>
 # include "./libft/libft.h"
-typedef struct s_stack
+typedef struct	s_stack
 {
 	struct s_stack	*prev;
 	struct s_stack	*next;
 	int				val;
 }	t_stack;
 
+typedef enum	e_op
+{
+	err,
+	sa,
+	sb,
+	ss,
+	pa,
+	pb,
+	ra,
+	rb,
+	rr,
+	rra,
+	rrb,
+	rrr
+}	t_op;
+
 t_stack	**create_stack(char **argv, t_stack **top);
 void	print_stack(t_stack **top);
 void	free_stack(t_stack **top);
 
+bool	do_operation(char *op, t_stack ***a_top, t_stack ***b_top);
+t_op	is_valid_op(char *line);
 #endif

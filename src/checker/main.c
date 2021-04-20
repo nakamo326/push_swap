@@ -25,9 +25,11 @@ static bool	is_valid_arg(char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_stack	**top;
+	t_stack	**a_top;
+	//t_stack	**b_top;
 
-	top = NULL;
+	a_top = malloc(sizeof(t_stack *));
+	*a_top = NULL;
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
 	if (!is_valid_arg(argv))
@@ -35,8 +37,8 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("Error", 2);
 		exit(EXIT_FAILURE);
 	}
-	top = create_stack(argv, top);
-	print_stack(top);
-	free_stack(top);
+	a_top = create_stack(argv, a_top);
+	print_stack(a_top);
+	free_stack(a_top);
 	return (0);
 }
