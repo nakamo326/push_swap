@@ -16,6 +16,5 @@ void	print_stack(t_stack **top)
 			break ;
 	}
 	ft_putstr_fd("]\n", 1);
-
 	return ;
 }

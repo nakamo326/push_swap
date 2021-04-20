@@ -30,7 +30,7 @@ static t_stack	**add_newelm(t_stack **top, int value)
 		return (top);
 	}
 	s_ptr = *top;
-	while(s_ptr->next != *top)
+	while (s_ptr->next != *top)
 		s_ptr = s_ptr->next;
 	s_ptr->next = new;
 	new->prev = s_ptr;
