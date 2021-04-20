@@ -10,7 +10,8 @@ P_SSRC =
 
 STCKSRC =	src/stack/create_stack.c \
 			src/stack/print_stack.c \
-			src/stack/free_stack.c
+			src/stack/free_stack.c \
+			src/stack/swap.c
 
 
 SRCDIRS = $(dir $(CHKRSRC)) $(dir $(P_SSRC)) $(dir $(STCKSRC))

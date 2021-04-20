@@ -39,6 +39,8 @@ int	main(int argc, char **argv)
 	}
 	a_top = create_stack(argv, a_top);
 	print_stack(a_top);
+	swap(&a_top);
+	print_stack(a_top);
 	free_stack(a_top);
 	return (0);
 }

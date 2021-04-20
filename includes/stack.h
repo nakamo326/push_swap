@@ -35,4 +35,5 @@ void	free_stack(t_stack **top);
 
 bool	do_operation(char *op, t_stack ***a_top, t_stack ***b_top);
 t_op	is_valid_op(char *line);
+bool	swap(t_stack ***top);
 #endif
