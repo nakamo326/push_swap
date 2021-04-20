@@ -40,4 +40,7 @@ bool	do_operation(char *op, t_stack ***a_top, t_stack ***b_top);
 t_op	is_valid_op(char *line);
 bool	swap(t_stack ***top);
 bool	push(t_stack ***out_top, t_stack ***in_top);
+bool	rotate(t_stack ***top);
+bool	rev_rotate(t_stack ***top);
+
 #endif

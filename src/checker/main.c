@@ -40,11 +40,19 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	a_top = create_stack(argv, a_top);
+
+
 	print_stack(a_top);
 	print_stack(b_top);
 	push(&a_top, &b_top);
+	push(&a_top, &b_top);
+	print_stack(a_top);
+	print_stack(b_top);
+	rotate(&a_top);
+	rev_rotate(&b_top);
 	print_stack(a_top);
 	print_stack(b_top);
 	free_stack(a_top);
+	free_stack(b_top);
 	return (0);
 }
