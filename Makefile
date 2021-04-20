@@ -9,8 +9,7 @@ CHKRSRC =	src/checker/main.c
 P_SSRC =
 
 STCKSRC =	src/stack/create_stack.c \
-			src/stack/print_stack.c \
-			src/stack/free_stack.c \
+			src/stack/stack_utils.c \
 			src/stack/swap.c
 
 

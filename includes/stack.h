@@ -30,6 +30,9 @@ typedef enum	e_op
 }	t_op;
 
 t_stack	**create_stack(char **argv, t_stack **top);
+t_stack	*create_newelm(int value);
+t_stack	**add_top(t_stack **top, int value);
+t_stack	**add_bottom(t_stack **top, int value);
 void	print_stack(t_stack **top);
 void	free_stack(t_stack **top);
 
