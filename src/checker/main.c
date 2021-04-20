@@ -25,6 +25,9 @@ static bool	is_valid_arg(char **argv)
 
 int	main(int argc, char **argv)
 {
+	t_stack	**top;
+
+	top = NULL;
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
 	if (!is_valid_arg(argv))
@@ -32,5 +35,7 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("Error", 2);
 		exit(EXIT_FAILURE);
 	}
+	top = create_stack(argv, top);
+	print_stack(top);
 	return (0);
 }

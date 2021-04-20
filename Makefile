@@ -4,11 +4,12 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I./includes -I.
 LIBFT = ./libft/libft.a
 
-CHKRSRC = src/checker/main.c
+CHKRSRC =	src/checker/main.c
 
 P_SSRC =
 
-STCKSRC =
+STCKSRC =	src/stack/create_stack.c \
+			src/stack/print_stack.c
 
 
 SRCDIRS = $(dir $(CHKRSRC)) $(dir $(P_SSRC)) $(dir $(STCKSRC))
