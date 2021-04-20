@@ -23,6 +23,17 @@ static bool	is_valid_arg(char **argv)
 	return (true);
 }
 
+void	run(t_stack **a_top, t_stack **b_top)
+{
+	char *line;
+	line = read_line();
+	do_operation(line, &a_top, &b_top);
+	free(line);
+	print_stack(a_top);
+	print_stack(b_top);
+	return ;
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	**a_top;
@@ -40,19 +51,9 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	a_top = create_stack(argv, a_top);
+	while (1)
+		run(a_top, b_top);
 
 
-	print_stack(a_top);
-	print_stack(b_top);
-	push(&a_top, &b_top);
-	push(&a_top, &b_top);
-	print_stack(a_top);
-	print_stack(b_top);
-	rotate(&a_top);
-	rev_rotate(&b_top);
-	print_stack(a_top);
-	print_stack(b_top);
-	free_stack(a_top);
-	free_stack(b_top);
 	return (0);
 }
