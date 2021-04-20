@@ -4,7 +4,7 @@ bool	swap(t_stack ***top)
 {
 	int	tmp;
 
-	if (**top == (**top)->next)
+	if (**top == NULL || **top == (**top)->next)
 		return (true);
 	tmp = (**top)->val;
 	(**top)->val = (**top)->next->val;
