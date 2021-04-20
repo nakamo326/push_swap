@@ -23,10 +23,25 @@ static bool	is_valid_arg(char **argv)
 	return (true);
 }
 
+static char *read_line(void)
+{
+	char	*buf;
+	int		rc;
+
+	buf = malloc(2048);
+	if (buf == NULL)
+		return (NULL);
+	rc = read(STDIN_FILENO, buf, 2047);
+	buf[rc] = '\0';
+	return (buf);
+}
+
 void	run(t_stack **a_top, t_stack **b_top)
 {
 	char *line;
 	line = read_line();
+	if (line == NULL)
+		return ;
 	do_operation(line, &a_top, &b_top);
 	free(line);
 	print_stack(a_top);
@@ -39,6 +54,8 @@ int	main(int argc, char **argv)
 	t_stack	**a_top;
 	t_stack	**b_top;
 
+	if (argc == 1)
+		return (0);
 	a_top = malloc(sizeof(t_stack *));
 	*a_top = NULL;
 	b_top = malloc(sizeof(t_stack *));
@@ -51,9 +68,8 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	a_top = create_stack(argv, a_top);
+	print_stack(a_top);
 	while (1)
 		run(a_top, b_top);
-
-
 	return (0);
 }

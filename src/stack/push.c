@@ -5,9 +5,14 @@ static t_stack	**delete_top(t_stack **top)
 	t_stack	*s_ptr;
 
 	s_ptr = *top;
-	*top = (*top)->next;
-	(*top)->prev = s_ptr->prev;
-	s_ptr->prev->next = (*top);
+	if (*top == (*top)->next)
+		*top = NULL;
+	else
+	{
+		*top = (*top)->next;
+		(*top)->prev = s_ptr->prev;
+		s_ptr->prev->next = (*top);
+	}
 	free(s_ptr);
 	return (top);
 }
