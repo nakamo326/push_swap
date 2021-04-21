@@ -1,5 +1,12 @@
 #include "push_swap.h"
 
+static int	exit_free(t_stack **a_top, t_stack **b_top)
+{
+	free_stack(a_top);
+	free_stack(b_top);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	**a_top;
