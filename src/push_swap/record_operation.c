@@ -12,9 +12,12 @@ static char	*convert_op(t_op op)
 
 char	**record_do(t_op op, char **ans, t_stack ***a_top, t_stack ***b_top)
 {
-	ft_addstr_split(ans, convert_op(op));
+	char	*str;
+
+	str = convert_op(op);
+	ans = ft_addstr_split(ans, str);
 	if (ans == NULL)
 		return (NULL);
-	do_operation(op, a_top, b_top);
+	do_operation(str, a_top, b_top);
 	return (ans);
 }

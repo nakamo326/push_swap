@@ -1,5 +1,11 @@
 #include "push_swap.h"
 
+static int	output_error(void)
+{
+	ft_putendl_fd("Error", 2);
+	return (EXIT_FAILURE);
+}
+
 static int	exit_free(t_stack **a_top, t_stack **b_top)
 {
 	free_stack(a_top);

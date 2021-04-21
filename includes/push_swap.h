@@ -13,5 +13,8 @@ typedef enum e_dir
 	PREV
 }	t_dir;
 
+bool	solver(t_stack **a_top, t_stack **b_top);
+char	**record_do(t_op op, char **ans, t_stack ***a_top, t_stack ***b_top);
+void	output_answer(char	**ans);
 
 #endif

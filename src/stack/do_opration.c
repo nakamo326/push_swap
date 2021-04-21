@@ -28,9 +28,9 @@ static bool	rotate_ent(t_op op, t_stack ***a_top, t_stack ***b_top)
 
 static bool	rev_rotate_ent(t_op op, t_stack ***a_top, t_stack ***b_top)
 {
-	if (op == sa)
+	if (op == rra)
 		return (rev_rotate(a_top));
-	else if (op == sb)
+	else if (op == rrb)
 		return (rev_rotate(b_top));
 	return (rev_rotate(a_top) && rev_rotate(b_top));
 }

@@ -10,6 +10,8 @@ CHKRSRC =	src/checker/check_result.c \
 			src/checker/output_message.c
 
 P_SSRC =	src/push_swap/main.c \
+			src/push_swap/output_answer.c \
+			src/push_swap/record_operation.c \
 			src/push_swap/solver.c
 
 STCKSRC =	src/stack/create_stack.c \
@@ -31,7 +33,7 @@ STCKOBJS = $(addprefix $(OBJDIR)/, $(STCKSRC:.c=.o))
 
 TEST = $(notdir $(basename $(SRCFILE)))
 
-all: $(CHECKER)
+all: $(CHECKER) $(P_S)
 
 $(CHECKER): $(CHKROBJS) $(STCKOBJS) $(LIBFT)
 	gcc -g $^ $(INCLUDES) -o $@
