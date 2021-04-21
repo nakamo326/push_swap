@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	**a_top;
 	t_stack	**b_top;
+	char	**ans;
 
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
@@ -29,6 +30,8 @@ int	main(int argc, char **argv)
 	a_top = create_stack(argv, a_top);
 	if (a_top == NULL)
 		return (output_error());
-	solver(a_top, b_top);
+	ans = solver(a_top, b_top);
+	output_answer(ans);
+	ft_free_split(ans);
 	return (exit_free(a_top, b_top));
 }

@@ -60,14 +60,14 @@ static char	**repeat_rotate(t_dir dir, int len, char **ans, t_stack ***a_top)
 	while (i < len)
 	{
 		ans = record_do(op, ans, a_top, NULL);
+		if (ans == NULL)
+			return (NULL);
 		i++;
 	}
 	return (ans);
 }
 
-//malloc error handling!!!
-
-bool	solver(t_stack **a_top, t_stack **b_top)
+char	**solver(t_stack **a_top, t_stack **b_top)
 {
 	char	**ans;
 	t_stack	*s_ptr;
@@ -80,17 +80,17 @@ bool	solver(t_stack **a_top, t_stack **b_top)
 		s_ptr = search_minimum_elm(a_top);
 		len = search_shortest(&dir, a_top, s_ptr);
 		ans = repeat_rotate(dir, len, ans, &a_top);
+		if (ans == NULL)
+			return (false);
 		ans = record_do(pb, ans, &a_top, &b_top);
 		if (ans == NULL)
-		{
-			ft_putendl_fd("Error", 2);
 			return (false);
-		}
 	}
 	while (*b_top != NULL)
+	{
 		ans = record_do(pa, ans, &a_top, &b_top);
-	output_answer(ans);
-	ft_free_split(ans);
-	return (true);
-
+		if (ans == NULL)
+			return (NULL);
+	}
+	return (ans);
 }
