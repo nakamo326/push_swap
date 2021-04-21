@@ -1,11 +1,5 @@
 #include "checker.h"
 
-static int	output_error(void)
-{
-	ft_putendl_fd("Error", 2);
-	return (EXIT_FAILURE);
-}
-
 static bool	is_valid_arg(char **argv)
 {
 	int	i;
@@ -29,31 +23,23 @@ static bool	is_valid_arg(char **argv)
 	return (true);
 }
 
-static char	*read_line(void)
-{
-	char	*buf;
-	int		rc;
-
-	buf = malloc(2048);
-	if (buf == NULL)
-		return (NULL);
-	rc = read(STDIN_FILENO, buf, 2047);
-	buf[rc] = '\0';
-	return (buf);
-}
-
-void	run(t_stack **a_top, t_stack **b_top)
+static bool	debug_run(t_stack **a_top, t_stack **b_top)
 {
 	char	*line;
+	int		rc;
 
-	line = read_line();
+	line = malloc(2048);
 	if (line == NULL)
-		return ;
+		return (NULL);
+	rc = read(STDIN_FILENO, line, 2047);
+	line[rc] = '\0';
+	if (rc == 0)
+		return (false);
 	do_operation(line, &a_top, &b_top);
 	free(line);
 	print_stack(a_top);
 	print_stack(b_top);
-	return ;
+	return (true);
 }
 
 int	main(int argc, char **argv)
@@ -75,7 +61,7 @@ int	main(int argc, char **argv)
 	if (a_top == NULL)
 		return (output_error());
 	print_stack(a_top);
-	while (1)
-		run(a_top, b_top);
+	while (debug_run(a_top, b_top));
+	check_result(a_top, b_top);
 	return (0);
 }

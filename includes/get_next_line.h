@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 11:32:00 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/04/20 23:23:47 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/04/21 12:40:44 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "libft.h"
+# include "./libft/libft.h"
 
 # define SUCCESS 1
 # define ERROR -1

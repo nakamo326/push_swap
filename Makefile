@@ -4,7 +4,10 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I./includes -I.
 LIBFT = ./libft/libft.a
 
-CHKRSRC =	src/checker/main.c
+CHKRSRC =	src/checker/check_result.c \
+			src/checker/get_next_line.c \
+			src/checker/main.c \
+			src/checker/output_message.c
 
 P_SSRC =
 

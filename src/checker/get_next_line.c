@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 11:55:15 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/04/21 00:42:46 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/04/21 09:00:12 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static ssize_t	read_line(ssize_t fd, char **line, char **buf)
 
 int	get_next_line(int fd, char **line)
 {
-	static char	*buf;
+	static char	*buf = NULL;
 	ssize_t		ret;
 
 	if (fd < 0 || !line || BUFFER_SIZE <= 0 || read(fd, buf, 0) < 0)
