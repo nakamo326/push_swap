@@ -1,6 +1,10 @@
 #ifndef CHECKER_H
 # define CHECKER_H
 
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
