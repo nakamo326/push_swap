@@ -81,10 +81,10 @@ char	**solver(t_stack **a_top, t_stack **b_top)
 		len = search_shortest(&dir, a_top, s_ptr);
 		ans = repeat_rotate(dir, len, ans, &a_top);
 		if (ans == NULL)
-			return (false);
+			return (NULL);
 		ans = record_do(pb, ans, &a_top, &b_top);
 		if (ans == NULL)
-			return (false);
+			return (NULL);
 	}
 	while (*b_top != NULL)
 	{
