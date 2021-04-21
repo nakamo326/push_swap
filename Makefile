@@ -9,10 +9,12 @@ CHKRSRC =	src/checker/check_result.c \
 			src/checker/main.c \
 			src/checker/output_message.c
 
-P_SSRC =
+P_SSRC =	src/push_swap/main.c \
+			src/push_swap/solver.c
 
 STCKSRC =	src/stack/create_stack.c \
 			src/stack/do_opration.c \
+			src/stack/is_valid_arg.c \
 			src/stack/is_valid_op.c \
 			src/stack/stack_utils.c \
 			src/stack/swap.c \

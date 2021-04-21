@@ -1,28 +1,5 @@
 #include "checker.h"
 
-static bool	is_valid_arg(char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (argv[i] != NULL)
-	{
-		j = 0;
-		if (!(ft_isdigit(argv[i][j]) || argv[i][j] == '-'))
-			return (false);
-		j++;
-		while (argv[i][j] != '\0')
-		{
-			if (!ft_isdigit(argv[i][j]))
-				return (false);
-			j++;
-		}
-		i++;
-	}
-	return (true);
-}
-
 static bool	debug_run(t_stack **a_top, t_stack **b_top)
 {
 	char	*line;
@@ -86,14 +63,12 @@ int	main(int argc, char **argv)
 	t_stack	**a_top;
 	t_stack	**b_top;
 
-	if (argc == 1)
-		return (0);
+	if (argc <= 1)
+		exit(EXIT_FAILURE);
 	a_top = malloc(sizeof(t_stack *));
 	*a_top = NULL;
 	b_top = malloc(sizeof(t_stack *));
 	*b_top = NULL;
-	if (argc <= 1)
-		exit(EXIT_FAILURE);
 	if (!is_valid_arg(argv))
 		return (output_error());
 	a_top = create_stack(argv, a_top);
