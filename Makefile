@@ -17,6 +17,7 @@ P_SSRC =	src/push_swap/main.c \
 
 STCKSRC =	src/stack/create_stack.c \
 			src/stack/do_opration.c \
+			src/stack/get_stacklen.c \
 			src/stack/is_valid_arg.c \
 			src/stack/is_valid_op.c \
 			src/stack/stack_utils.c \
