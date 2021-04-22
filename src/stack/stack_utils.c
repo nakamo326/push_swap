@@ -18,6 +18,8 @@ void	free_stack(t_stack **top)
 	t_stack	*s_ptr;
 	t_stack	*tmp;
 
+	if (top == NULL)
+		return ;
 	s_ptr = *top;
 	while (s_ptr)
 	{

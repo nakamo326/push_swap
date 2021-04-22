@@ -53,7 +53,6 @@ static char	**get_list(void)
 static bool	normal_run(t_stack **a_top, t_stack **b_top)
 {
 	int		i;
-	char	*line;
 	char	**list;
 
 	list = get_list();

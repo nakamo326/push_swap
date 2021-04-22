@@ -12,7 +12,6 @@
 # include "get_next_line.h"
 # include "./libft/libft.h"
 
-int		output_error(void);
 void	output_ko(void);
 void	output_ok(void);
 
