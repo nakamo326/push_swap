@@ -14,7 +14,7 @@ static bool	debug_run(t_stack **a_top, t_stack **b_top)
 		line[rc] = '\0';
 		if (rc == 0)
 			break ;
-		if (do_operation(line, a_top, b_top))
+		if (!do_operation(line, a_top, b_top))
 		{
 			free(line);
 			return (false);
@@ -42,6 +42,11 @@ static char	**get_list(void)
 			list = ft_free_split(list);
 			return (NULL);
 		}
+		if (ret == END)
+		{
+			free(line);
+			break ;
+		}
 		list = ft_addstr_split(list, line);
 		free(line);
 		if (list == NULL)
@@ -61,7 +66,7 @@ static bool	normal_run(t_stack **a_top, t_stack **b_top)
 	i = 0;
 	while (list && list[i] != NULL)
 	{
-		if (do_operation(list[i], a_top, b_top))
+		if (!do_operation(list[i], a_top, b_top))
 		{
 			ft_free_split(list);
 			return (false);

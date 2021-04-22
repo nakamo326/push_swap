@@ -9,7 +9,7 @@ static int	exit_free(t_stack **a_top, t_stack **b_top)
 
 static int	output_error(t_stack **a_top, t_stack **b_top)
 {
-	ft_putendl_fd("Error", 2);
+	ft_putendl_fd("Error", STDERR_FILENO);
 	exit_free(a_top, b_top);
 	return (EXIT_FAILURE);
 }
