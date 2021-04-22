@@ -49,7 +49,7 @@ void	print_stack(t_stack **top)
 	return ;
 }
 
-t_stack	**add_top(t_stack **top, int value)
+t_stack	*add_top(t_stack **top, int value)
 {
 	t_stack	*new;
 	t_stack	*s_ptr;
@@ -62,7 +62,7 @@ t_stack	**add_top(t_stack **top, int value)
 		new->next = new;
 		new->prev = new;
 		*top = new;
-		return (top);
+		return (*top);
 	}
 	s_ptr = *top;
 	new->next = s_ptr;
@@ -70,10 +70,10 @@ t_stack	**add_top(t_stack **top, int value)
 	s_ptr->prev = new;
 	new->prev->next = new;
 	*top = new;
-	return (top);
+	return (*top);
 }
 
-t_stack	**add_bottom(t_stack **top, int value)
+t_stack	*add_bottom(t_stack **top, int value)
 {
 	t_stack	*new;
 	t_stack	*s_ptr;
@@ -86,7 +86,7 @@ t_stack	**add_bottom(t_stack **top, int value)
 		new->next = new;
 		new->prev = new;
 		*top = new;
-		return (top);
+		return (*top);
 	}
 	s_ptr = *top;
 	while (s_ptr->next != *top)
@@ -95,5 +95,5 @@ t_stack	**add_bottom(t_stack **top, int value)
 	new->prev = s_ptr;
 	new->next = *top;
 	(*top)->prev = new;
-	return (top);
+	return (*top);
 }

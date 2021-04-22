@@ -10,7 +10,7 @@ static char	*convert_op(t_op op)
 	return (str_set[op]);
 }
 
-char	**record_do(t_op op, char **ans, t_stack ***a_top, t_stack ***b_top)
+char	**record_do(t_op op, char **ans, t_stack **a_top, t_stack **b_top)
 {
 	char	*str;
 

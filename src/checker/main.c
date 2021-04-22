@@ -15,7 +15,7 @@ static bool	debug_run(t_stack **a_top, t_stack **b_top)
 		free(line);
 		return (false);
 	}
-	do_operation(line, &a_top, &b_top);
+	do_operation(line, a_top, b_top);
 	free(line);
 	print_stack(a_top);
 	print_stack(b_top);
@@ -44,7 +44,8 @@ static void	run_operation(t_stack **a_top, t_stack **b_top)
 	ret = 0;
 	while (list && list[ret] != NULL)
 	{
-		do_operation(list[ret], &a_top, &b_top);
+		//error!!!
+		do_operation(list[ret], a_top, b_top);
 		ret++;
 	}
 	ft_free_split(list);

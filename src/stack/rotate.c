@@ -1,17 +1,17 @@
 #include "stack.h"
 
-bool	rotate(t_stack ***top)
+bool	rotate(t_stack **top)
 {
-	if (**top == NULL)
+	if (*top == NULL)
 		return (true);
-	**top = (**top)->next;
+	*top = (*top)->next;
 	return (true);
 }
 
-bool	rev_rotate(t_stack ***top)
+bool	rev_rotate(t_stack **top)
 {
-	if (**top == NULL)
+	if (*top == NULL)
 		return (true);
-	**top = (**top)->prev;
+	*top = (*top)->prev;
 	return (true);
 }

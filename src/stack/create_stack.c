@@ -33,7 +33,7 @@ t_stack	**create_stack(char **argv, t_stack **top)
 			return (NULL);
 		}
 		tmp = top;
-		top = add_bottom(top, (int)value);
+		*top = add_bottom(top, (int)value);
 		if (top == NULL)
 		{
 			free_stack(tmp);

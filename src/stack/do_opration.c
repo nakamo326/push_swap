@@ -1,7 +1,7 @@
 #include "stack.h"
 //各operationが成功かどうかをboolで返す？
 
-static bool	swap_ent(t_op op, t_stack ***a_top, t_stack ***b_top)
+static bool	swap_ent(t_op op, t_stack **a_top, t_stack **b_top)
 {
 	if (op == sa)
 		return (swap(a_top));
@@ -10,14 +10,14 @@ static bool	swap_ent(t_op op, t_stack ***a_top, t_stack ***b_top)
 	return (swap(a_top) && swap(b_top));
 }
 
-static bool	push_ent(t_op op, t_stack ***a_top, t_stack ***b_top)
+static bool	push_ent(t_op op, t_stack **a_top, t_stack **b_top)
 {
 	if (op == pa)
 		return (push(b_top, a_top));
 	return (push(a_top, b_top));
 }
 
-static bool	rotate_ent(t_op op, t_stack ***a_top, t_stack ***b_top)
+static bool	rotate_ent(t_op op, t_stack **a_top, t_stack **b_top)
 {
 	if (op == ra)
 		return (rotate(a_top));
@@ -26,7 +26,7 @@ static bool	rotate_ent(t_op op, t_stack ***a_top, t_stack ***b_top)
 	return (rotate(a_top) && rotate(b_top));
 }
 
-static bool	rev_rotate_ent(t_op op, t_stack ***a_top, t_stack ***b_top)
+static bool	rev_rotate_ent(t_op op, t_stack **a_top, t_stack **b_top)
 {
 	if (op == rra)
 		return (rev_rotate(a_top));
@@ -35,7 +35,7 @@ static bool	rev_rotate_ent(t_op op, t_stack ***a_top, t_stack ***b_top)
 	return (rev_rotate(a_top) && rev_rotate(b_top));
 }
 
-bool	do_operation(char *line, t_stack ***a_top, t_stack ***b_top)
+bool	do_operation(char *line, t_stack **a_top, t_stack **b_top)
 {
 	t_op	op;
 
