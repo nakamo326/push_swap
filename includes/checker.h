@@ -14,6 +14,7 @@
 
 void	output_ko(void);
 void	output_ok(void);
+int		output_error(t_stack **a_top, t_stack **b_top);
 
 void	run_operation(t_stack **a_top, t_stack **b_top);
 void	check_result(t_stack **a_top, t_stack **b_top);

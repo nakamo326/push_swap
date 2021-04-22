@@ -33,8 +33,8 @@ static char	**get_list(void)
 	char	**list;
 
 	list = NULL;
-	ret = 1;
-	while (ret == 1)
+	ret = SUCCESS;
+	while (ret == SUCCESS)
 	{
 		ret = get_next_line(STDIN_FILENO, &line);
 		if (ret == ERROR)
@@ -42,7 +42,7 @@ static char	**get_list(void)
 			list = ft_free_split(list);
 			return (NULL);
 		}
-		if (ret == END)
+		if (ret == END && (line == NULL || *line == '\0'))
 		{
 			free(line);
 			break ;
@@ -87,8 +87,7 @@ void	run_operation(t_stack **a_top, t_stack **b_top)
 		ret = normal_run(a_top, b_top);
 	if (ret == false)
 	{
-		free_stack(a_top);
-		free_stack(b_top);
+		output_error(a_top, b_top);
 		exit(EXIT_FAILURE);
 	}
 	return ;
