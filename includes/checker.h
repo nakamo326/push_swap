@@ -2,7 +2,7 @@
 # define CHECKER_H
 
 # ifndef DEBUG
-#  define DEBUG 0
+#  define DEBUG 1
 # endif
 
 # include <stdlib.h>
@@ -16,6 +16,7 @@ int		output_error(void);
 void	output_ko(void);
 void	output_ok(void);
 
+void	run_operation(t_stack **a_top, t_stack **b_top);
 void	check_result(t_stack **a_top, t_stack **b_top);
 
 #endif
