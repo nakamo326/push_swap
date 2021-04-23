@@ -26,7 +26,8 @@ t_stack	**create_stack(char **argv, t_stack **top)
 	i = 1;
 	while (argv[i] != NULL)
 	{
-		if (!ft_strncmp(argv[i], "-", 2) || !ft_strncmp(argv[i], "+", 2))
+		if (!ft_strncmp(argv[i], "-", 2) || !ft_strncmp(argv[i], "+", 2)
+			|| ft_strlen(argv[i]) > (size_t)12)
 			return (free_stack(top));
 		value = ft_atoll(argv[i]);
 		if (value > INT_MAX || value < INT_MIN || !check_dup(value, top))
