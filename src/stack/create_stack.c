@@ -26,19 +26,15 @@ t_stack	**create_stack(char **argv, t_stack **top)
 	i = 1;
 	while (argv[i] != NULL)
 	{
+		if (!ft_strncmp(argv[i], "-", 2) || !ft_strncmp(argv[i], "+", 2))
+			return (free_stack(top));
 		value = ft_atoll(argv[i]);
 		if (value > INT_MAX || value < INT_MIN || !check_dup(value, top))
-		{
-			free_stack(top);
-			return (NULL);
-		}
+			return (free_stack(top));
 		tmp = top;
 		*top = add_bottom(top, (int)value);
 		if (top == NULL)
-		{
-			free_stack(tmp);
-			return (NULL);
-		}
+			return (free_stack(tmp));
 		i++;
 	}
 	return (top);

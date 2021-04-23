@@ -34,7 +34,7 @@ t_stack	*create_newelm(int value);
 t_stack	*add_top(t_stack **top, int value);
 t_stack	*add_bottom(t_stack **top, int value);
 void	print_stack(t_stack **top);
-void	free_stack(t_stack **top);
+void	*free_stack(t_stack **top);
 int		get_stacklen(t_stack **top);
 
 bool	is_valid_arg(char **argv);

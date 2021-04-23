@@ -30,6 +30,25 @@ static void	init_stack(t_stack ***a, t_stack ***b)
 	return ;
 }
 
+static bool	check_stack(t_stack **a)
+{
+	int		tmp;
+	t_stack	*s_ptr;
+
+	tmp = (*a)->val;
+	s_ptr = (*a)->next;
+	while (s_ptr)
+	{
+		if (s_ptr == *a)
+			break ;
+		if (tmp > s_ptr->val)
+			return (false);
+		tmp = s_ptr->val;
+		s_ptr = s_ptr->next;
+	}
+	return (true);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	**a;
@@ -44,7 +63,8 @@ int	main(int argc, char **argv)
 	a = create_stack(argv, a);
 	if (a == NULL)
 		return (output_error(NULL, b));
-	ans = solver_ent(a, b);
+	if (!check_stack(a))
+		ans = solver_ent(a, b);
 	output_answer(ans);
 	ft_free_split(ans);
 	return (exit_free(a, b));

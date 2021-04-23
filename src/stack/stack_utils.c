@@ -13,13 +13,13 @@ t_stack	*create_newelm(int value)
 	return (new);
 }
 
-void	free_stack(t_stack **top)
+void	*free_stack(t_stack **top)
 {
 	t_stack	*s_ptr;
 	t_stack	*tmp;
 
 	if (top == NULL)
-		return ;
+		return (NULL);
 	s_ptr = *top;
 	while (s_ptr)
 	{
@@ -30,6 +30,7 @@ void	free_stack(t_stack **top)
 			break ;
 	}
 	free(top);
+	return (NULL);
 }
 
 void	print_stack(t_stack **top)
