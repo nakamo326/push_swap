@@ -67,22 +67,27 @@ static char	**repeat_rotate(t_dir dir, int len, char **ans, t_stack **a_top)
 	return (ans);
 }
 
+char	**pb_mininum(t_stack **a_top, t_stack **b_top, char **ans)
+{
+	t_stack	*s;
+	t_dir	dir;
+	int		len;
+
+	s = search_minimum_elm(a_top);
+	len = search_shortest(&dir, a_top, s);
+	ans = repeat_rotate(dir, len, ans, a_top);
+	ans = record_do(pb, ans, a_top, b_top);
+	return (ans);
+}
+
 char	**solver(t_stack **a_top, t_stack **b_top)
 {
 	char	**ans;
-	t_stack	*s_ptr;
-	t_dir	dir;
-	int		len;
 
 	ans = NULL;
 	while (*a_top != (*a_top)->next)
 	{
-		s_ptr = search_minimum_elm(a_top);
-		len = search_shortest(&dir, a_top, s_ptr);
-		ans = repeat_rotate(dir, len, ans, a_top);
-		if (ans == NULL)
-			return (NULL);
-		ans = record_do(pb, ans, a_top, b_top);
+		ans = pb_mininum(a_top, b_top, ans);
 		if (ans == NULL)
 			return (NULL);
 	}

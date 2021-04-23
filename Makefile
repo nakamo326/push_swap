@@ -13,6 +13,8 @@ CHKRSRC =	src/checker/check_result.c \
 P_SSRC =	src/push_swap/main.c \
 			src/push_swap/output_answer.c \
 			src/push_swap/record_operation.c \
+			src/push_swap/solve_short.c \
+			src/push_swap/solver_ent.c \
 			src/push_swap/solver.c
 
 STCKSRC =	src/stack/create_stack.c \
