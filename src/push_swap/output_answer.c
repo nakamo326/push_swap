@@ -5,6 +5,8 @@ void	output_answer(char	**ans)
 	int	i;
 
 	i = 0;
+	if (ans == NULL)
+		return ;
 	while (ans[i])
 	{
 		ft_putendl_fd(ans[i], 1);

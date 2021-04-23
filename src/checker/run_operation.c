@@ -26,33 +26,31 @@ static bool	debug_run(t_stack **a_top, t_stack **b_top)
 	return (true);
 }
 
-static char	**get_list(void)
+static bool	get_list(char ***list)
 {
 	int		ret;
 	char	*line;
-	char	**list;
 
-	list = NULL;
 	ret = SUCCESS;
 	while (ret == SUCCESS)
 	{
 		ret = get_next_line(STDIN_FILENO, &line);
 		if (ret == ERROR)
 		{
-			list = ft_free_split(list);
-			return (NULL);
+			*list = ft_free_split(*list);
+			return (false);
 		}
 		if (ret == END && (line == NULL || *line == '\0'))
 		{
 			free(line);
 			break ;
 		}
-		list = ft_addstr_split(list, line);
+		*list = ft_addstr_split(*list, line);
 		free(line);
-		if (list == NULL)
+		if (*list == NULL)
 			return (NULL);
 	}
-	return (list);
+	return (true);
 }
 
 static bool	normal_run(t_stack **a_top, t_stack **b_top)
@@ -60,8 +58,8 @@ static bool	normal_run(t_stack **a_top, t_stack **b_top)
 	int		i;
 	char	**list;
 
-	list = get_list();
-	if (list == NULL)
+	list = NULL;
+	if (!get_list(&list))
 		return (false);
 	i = 0;
 	while (list && list[i] != NULL)
