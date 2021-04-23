@@ -1,33 +1,18 @@
 #include "push_swap.h"
 
-static int	exit_free(t_stack **a, t_stack **b)
+int		wrap_exit(t_ps *ps)
 {
-	free_stack(a);
-	free_stack(b);
-	return (0);
+	free_stack(ps->a);
+	free_stack(ps->b);
+	free(ps);
+	return (EXIT_SUCCESS);
 }
 
-static int	output_error(t_stack **a, t_stack **b)
+static int	output_error(t_ps *ps)
 {
 	ft_putendl_fd("Error", STDERR_FILENO);
-	exit_free(a, b);
+	wrap_exit(ps);
 	return (EXIT_FAILURE);
-}
-
-static void	init_stack(t_stack ***a, t_stack ***b)
-{
-	*a = malloc(sizeof(t_stack *));
-	if (*a == NULL)
-		exit(EXIT_FAILURE);
-	**a = NULL;
-	*b = malloc(sizeof(t_stack *));
-	if (*b == NULL)
-	{
-		free(*a);
-		exit(EXIT_FAILURE);
-	}
-	**b = NULL;
-	return ;
 }
 
 static bool	check_stack(t_stack **a)
@@ -51,21 +36,21 @@ static bool	check_stack(t_stack **a)
 
 int	main(int argc, char **argv)
 {
-	t_stack	**a;
-	t_stack	**b;
+	t_ps	*ps;
 	char	**ans;
 
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
-	init_stack(&a, &b);
+	ps = init_ps();
+	ans = NULL;
 	if (!is_valid_arg(argv))
-		return (output_error(a, b));
-	a = create_stack(argv, a);
-	if (a == NULL)
-		return (output_error(NULL, b));
-	if (!check_stack(a))
-		ans = solver_ent(a, b);
+		return (output_error(ps));
+	ps->a = create_stack(argv, ps->a);
+	if (ps->a == NULL)
+		return (output_error(ps));
+	if (!check_stack(ps->a))
+		ans = solver_ent(ps);
 	output_answer(ans);
 	ft_free_split(ans);
-	return (exit_free(a, b));
+	return (wrap_exit(ps));
 }

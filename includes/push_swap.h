@@ -18,9 +18,11 @@ typedef struct s_ps
 	t_stack	**a;
 	t_stack	**b;
 	int		*list;
+	int		list_len;
 }	t_ps;
 
-char	**solver_ent(t_stack **a, t_stack **b);
+t_ps	*init_ps(void);
+char	**solver_ent(t_ps *ps);
 char	**solver(t_stack **a, t_stack **b);
 char	**pb_mininum(t_stack **a, t_stack **b, char **ans);
 char	**solve_two(t_stack **top, char **ans);
