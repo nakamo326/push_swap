@@ -1,17 +1,17 @@
 #include "checker.h"
 
-void	check_result(t_stack **a_top, t_stack **b_top)
+void	check_result(t_stack **a, t_stack **b)
 {
 	int		tmp;
 	t_stack	*s_ptr;
 
-	if (*b_top != NULL)
+	if (*b != NULL)
 		return (output_ko());
-	tmp = (*a_top)->val;
-	s_ptr = (*a_top)->next;
+	tmp = (*a)->val;
+	s_ptr = (*a)->next;
 	while (s_ptr)
 	{
-		if (s_ptr == *a_top)
+		if (s_ptr == *a)
 			break ;
 		if (tmp > s_ptr->val)
 			return (output_ko());

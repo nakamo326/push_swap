@@ -10,7 +10,7 @@ static char	*convert_op(t_op op)
 	return (str_set[op]);
 }
 
-char	**record_do(t_op op, char **ans, t_stack **a_top, t_stack **b_top)
+char	**record_do(t_op op, char **ans, t_stack **a, t_stack **b)
 {
 	char	*str;
 
@@ -18,6 +18,6 @@ char	**record_do(t_op op, char **ans, t_stack **a_top, t_stack **b_top)
 	ans = ft_addstr_split(ans, str);
 	if (ans == NULL)
 		return (NULL);
-	do_operation(str, a_top, b_top);
+	do_operation(str, a, b);
 	return (ans);
 }

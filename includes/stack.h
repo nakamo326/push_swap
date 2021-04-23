@@ -38,7 +38,7 @@ void	free_stack(t_stack **top);
 int		get_stacklen(t_stack **top);
 
 bool	is_valid_arg(char **argv);
-bool	do_operation(char *op, t_stack **a_top, t_stack **b_top);
+bool	do_operation(char *op, t_stack **a, t_stack **b);
 t_op	is_valid_op(char *line);
 bool	swap(t_stack **top);
 bool	push(t_stack **out_top, t_stack **in_top);

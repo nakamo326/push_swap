@@ -1,49 +1,49 @@
 #include "checker.h"
 
-static int	exit_free(t_stack **a_top, t_stack **b_top)
+static int	exit_free(t_stack **a, t_stack **b)
 {
-	free_stack(a_top);
-	free_stack(b_top);
+	free_stack(a);
+	free_stack(b);
 	return (0);
 }
 
-int	output_error(t_stack **a_top, t_stack **b_top)
+int	output_error(t_stack **a, t_stack **b)
 {
 	ft_putendl_fd("Error", STDERR_FILENO);
-	exit_free(a_top, b_top);
+	exit_free(a, b);
 	return (EXIT_FAILURE);
 }
 
-static void	init_stack(t_stack ***a_top, t_stack ***b_top)
+static void	init_stack(t_stack ***a, t_stack ***b)
 {
-	*a_top = malloc(sizeof(t_stack *));
-	if (*a_top == NULL)
+	*a = malloc(sizeof(t_stack *));
+	if (*a == NULL)
 		exit(EXIT_FAILURE);
-	**a_top = NULL;
-	*b_top = malloc(sizeof(t_stack *));
-	if (*b_top == NULL)
+	**a = NULL;
+	*b = malloc(sizeof(t_stack *));
+	if (*b == NULL)
 	{
-		free(*a_top);
+		free(*a);
 		exit(EXIT_FAILURE);
 	}
-	**b_top = NULL;
+	**b = NULL;
 	return ;
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack	**a_top;
-	t_stack	**b_top;
+	t_stack	**a;
+	t_stack	**b;
 
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
-	init_stack(&a_top, &b_top);
+	init_stack(&a, &b);
 	if (!is_valid_arg(argv))
-		return (output_error(a_top, b_top));
-	a_top = create_stack(argv, a_top);
-	if (a_top == NULL)
-		return (output_error(NULL, b_top));
-	run_operation(a_top, b_top);
-	check_result(a_top, b_top);
-	return (exit_free(a_top, b_top));
+		return (output_error(a, b));
+	a = create_stack(argv, a);
+	if (a == NULL)
+		return (output_error(NULL, b));
+	run_operation(a, b);
+	check_result(a, b);
+	return (exit_free(a, b));
 }

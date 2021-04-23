@@ -1,6 +1,6 @@
 #include "checker.h"
 
-static bool	debug_run(t_stack **a_top, t_stack **b_top)
+static bool	debug_run(t_stack **a, t_stack **b)
 {
 	char	*line;
 	int		rc;
@@ -14,13 +14,13 @@ static bool	debug_run(t_stack **a_top, t_stack **b_top)
 		line[rc] = '\0';
 		if (rc == 0)
 			break ;
-		if (!do_operation(line, a_top, b_top))
+		if (!do_operation(line, a, b))
 		{
 			free(line);
 			return (false);
 		}
-		print_stack(a_top);
-		print_stack(b_top);
+		print_stack(a);
+		print_stack(b);
 	}
 	free(line);
 	return (true);
@@ -53,7 +53,7 @@ static bool	get_list(char ***list)
 	return (true);
 }
 
-static bool	normal_run(t_stack **a_top, t_stack **b_top)
+static bool	normal_run(t_stack **a, t_stack **b)
 {
 	int		i;
 	char	**list;
@@ -64,7 +64,7 @@ static bool	normal_run(t_stack **a_top, t_stack **b_top)
 	i = 0;
 	while (list && list[i] != NULL)
 	{
-		if (!do_operation(list[i], a_top, b_top))
+		if (!do_operation(list[i], a, b))
 		{
 			ft_free_split(list);
 			return (false);
@@ -75,17 +75,17 @@ static bool	normal_run(t_stack **a_top, t_stack **b_top)
 	return (true);
 }
 
-void	run_operation(t_stack **a_top, t_stack **b_top)
+void	run_operation(t_stack **a, t_stack **b)
 {
 	bool	ret;
 
 	if (DEBUG)
-		ret = debug_run(a_top, b_top);
+		ret = debug_run(a, b);
 	else
-		ret = normal_run(a_top, b_top);
+		ret = normal_run(a, b);
 	if (ret == false)
 	{
-		output_error(a_top, b_top);
+		output_error(a, b);
 		exit(EXIT_FAILURE);
 	}
 	return ;

@@ -1,52 +1,52 @@
 #include "stack.h"
 //各operationが成功かどうかをboolで返す？
 
-static bool	swap_ent(t_op op, t_stack **a_top, t_stack **b_top)
+static bool	swap_ent(t_op op, t_stack **a, t_stack **b)
 {
 	if (op == sa)
-		return (swap(a_top));
+		return (swap(a));
 	else if (op == sb)
-		return (swap(b_top));
-	return (swap(a_top) && swap(b_top));
+		return (swap(b));
+	return (swap(a) && swap(b));
 }
 
-static bool	push_ent(t_op op, t_stack **a_top, t_stack **b_top)
+static bool	push_ent(t_op op, t_stack **a, t_stack **b)
 {
 	if (op == pa)
-		return (push(b_top, a_top));
-	return (push(a_top, b_top));
+		return (push(b, a));
+	return (push(a, b));
 }
 
-static bool	rotate_ent(t_op op, t_stack **a_top, t_stack **b_top)
+static bool	rotate_ent(t_op op, t_stack **a, t_stack **b)
 {
 	if (op == ra)
-		return (rotate(a_top));
+		return (rotate(a));
 	else if (op == rb)
-		return (rotate(b_top));
-	return (rotate(a_top) && rotate(b_top));
+		return (rotate(b));
+	return (rotate(a) && rotate(b));
 }
 
-static bool	rev_rotate_ent(t_op op, t_stack **a_top, t_stack **b_top)
+static bool	rev_rotate_ent(t_op op, t_stack **a, t_stack **b)
 {
 	if (op == rra)
-		return (rev_rotate(a_top));
+		return (rev_rotate(a));
 	else if (op == rrb)
-		return (rev_rotate(b_top));
-	return (rev_rotate(a_top) && rev_rotate(b_top));
+		return (rev_rotate(b));
+	return (rev_rotate(a) && rev_rotate(b));
 }
 
-bool	do_operation(char *line, t_stack **a_top, t_stack **b_top)
+bool	do_operation(char *line, t_stack **a, t_stack **b)
 {
 	t_op	op;
 
 	op = is_valid_op(line);
 	if (op == sa || op == sb || op == ss)
-		return (swap_ent(op, a_top, b_top));
+		return (swap_ent(op, a, b));
 	else if (op == pa || op == pb)
-		return (push_ent(op, a_top, b_top));
+		return (push_ent(op, a, b));
 	else if (op == ra || op == rb || op == rr)
-		return (rotate_ent(op, a_top, b_top));
+		return (rotate_ent(op, a, b));
 	else if (op == rra || op == rrb || op == rrr)
-		return (rev_rotate_ent(op, a_top, b_top));
+		return (rev_rotate_ent(op, a, b));
 	return (false);
 }

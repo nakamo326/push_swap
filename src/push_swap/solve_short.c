@@ -32,26 +32,26 @@ char	**solve_three(t_stack **top, char **ans)
 	return (ans);
 }
 
-char	**solve_four(t_stack **a_top, t_stack **b_top, char **ans)
+char	**solve_four(t_stack **a, t_stack **b, char **ans)
 {
-	ans = pb_mininum(a_top, b_top, ans);
-	ans = solve_three(a_top, ans);
-	ans = record_do(pa, ans, a_top, b_top);
+	ans = pb_mininum(a, b, ans);
+	ans = solve_three(a, ans);
+	ans = record_do(pa, ans, a, b);
 	return (ans);
 }
 
-char	**solve_five(t_stack **a_top, t_stack **b_top, char **ans)
+char	**solve_five(t_stack **a, t_stack **b, char **ans)
 {
-	ans = pb_mininum(a_top, b_top, ans);
-	ans = solve_four(a_top, b_top, ans);
-	ans = record_do(pa, ans, a_top, b_top);
+	ans = pb_mininum(a, b, ans);
+	ans = solve_four(a, b, ans);
+	ans = record_do(pa, ans, a, b);
 	return (ans);
 }
 
-char	**solve_six(t_stack **a_top, t_stack **b_top, char **ans)
+char	**solve_six(t_stack **a, t_stack **b, char **ans)
 {
-	ans = pb_mininum(a_top, b_top, ans);
-	ans = solve_five(a_top, b_top, ans);
-	ans = record_do(pa, ans, a_top, b_top);
+	ans = pb_mininum(a, b, ans);
+	ans = solve_five(a, b, ans);
+	ans = record_do(pa, ans, a, b);
 	return (ans);
 }
