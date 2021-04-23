@@ -17,7 +17,9 @@ char	**solver_ent(t_stack **a_top, t_stack **b_top)
 		return (solve_four(a_top, b_top, ans));
 	else if (len == 5)
 		return (solve_five(a_top, b_top, ans));
-	else if (len >= 6)
+	else if (len == 6)
+		return (solve_six(a_top, b_top, ans));
+	else if (len >= 7)
 		return (solver(a_top, b_top));
 	return (NULL);
 }

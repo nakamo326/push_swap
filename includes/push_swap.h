@@ -20,6 +20,7 @@ char	**solve_two(t_stack **top, char **ans);
 char	**solve_three(t_stack **top, char **ans);
 char	**solve_four(t_stack **a_top, t_stack **b_top, char **ans);
 char	**solve_five(t_stack **a_top, t_stack **b_top, char **ans);
+char	**solve_six(t_stack **a_top, t_stack **b_top, char **ans);
 char	**record_do(t_op op, char **ans, t_stack **a_top, t_stack **b_top);
 void	output_answer(char	**ans);
 

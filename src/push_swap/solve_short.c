@@ -47,3 +47,11 @@ char	**solve_five(t_stack **a_top, t_stack **b_top, char **ans)
 	ans = record_do(pa, ans, a_top, b_top);
 	return (ans);
 }
+
+char	**solve_six(t_stack **a_top, t_stack **b_top, char **ans)
+{
+	ans = pb_mininum(a_top, b_top, ans);
+	ans = solve_five(a_top, b_top, ans);
+	ans = record_do(pa, ans, a_top, b_top);
+	return (ans);
+}
