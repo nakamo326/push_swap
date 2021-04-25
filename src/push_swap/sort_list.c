@@ -1,48 +1,51 @@
 #include "push_swap.h"
 
-static bool	create_unsorted(t_ps *ps)
+static int	*create_unsorted(t_stack **s, int *listlen)
 {
+	int		*list;
 	t_stack	*s_ptr;
 	int		i;
 
-	ps->list_len = get_stacklen(ps->a);
-	ps->list = malloc(sizeof(int) * ps->list_len);
-	if (ps->list == NULL)
+	*listlen = get_stacklen(s);
+	list = malloc(sizeof(int) * *listlen);
+	if (list == NULL)
 		return (false);
 	i = 0;
-	s_ptr = *ps->a;
-	while (i < ps->list_len)
+	s_ptr = *s;
+	while (i < *listlen)
 	{
-		ps->list[i] = s_ptr->val;
+		list[i] = s_ptr->val;
 		i++;
 		s_ptr = s_ptr->next;
 	}
 	return (true);
 }
 
-bool	sort_list(t_ps *ps)
+int	*sort_list(t_stack **s, int	*list)
 {
-	int		i;
-	int		j;
-	int		tmp;
+	int	listlen;
+	int	i;
+	int	j;
+	int	tmp;
 
-	if (!create_unsorted(ps))
-		return (false);
+	list = create_unsorted(s, &listlen);
+	if (!list)
+		return (NULL);
 	i = 0;
-	while (i < ps->list_len)
+	while (i < listlen)
 	{
 		j = i + 1;
-		while (j < ps->list_len)
+		while (j < listlen)
 		{
-			if (ps->list[i] > ps->list[j])
+			if (list[i] > list[j])
 			{
-				tmp = ps->list[i];
-				ps->list[i] = ps->list[j];
-				ps->list[j] = tmp;
+				tmp = list[i];
+				list[i] = list[j];
+				list[j] = tmp;
 			}
 			j++;
 		}
 		i++;
 	}
-	return (true);
+	return (list);
 }

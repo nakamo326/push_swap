@@ -118,7 +118,8 @@ char	**solve_quick(t_ps *ps)
 	int	i;
 	int	n;
 
-	sort_list(ps);
+	ps->list_len = get_stacklen(ps->a);
+	ps->list = sort_list(ps, ps->list);
 	size = get_sortsize(ps->list_len);
 	i = 0;
 	n = ps->list_len / size + ((ps->list_len % size) > 0);
