@@ -8,7 +8,7 @@ int	get_sortsize(int stacklen)
 	if (stacklen <= 100)
 		return (25);
 	if (stacklen <= 300)
-		return (50);
+		return (40);
 	return (50);
 }
 
@@ -45,55 +45,71 @@ bool	divide_stack(t_ps *ps, int start, int end)
 		i++;
 	}
 	*ps->a = s_ptr;
-	//print_stack(ps->b);
 	return (true);
 }
 
-static char	**repeat_rotate(t_dir dir, int len, char **ans, t_stack **b)
+int	check_toptwo(t_ps *ps, int i)
 {
-	int		i;
-	t_op	op;
-
-	if (dir == NEXT)
-		op = rb;
-	else
-		op = rrb;
-	i = 0;
-	while (i < len)
+	if (*ps->a == NULL || i >= ps->list_len)
+		return (i);
+	if ((*ps->a)->val == ps->list[i])
 	{
-		ans = record_do(op, ans, NULL, b);
-		if (ans == NULL)
-			return (NULL);
+		ps->ans = record_do(ra, ps->ans, ps->a, ps->b);
 		i++;
+		return (check_toptwo(ps, i));
 	}
-	return (ans);
+	else if ((*ps->a)->next->val == ps->list[i])
+	{
+		ps->ans = record_do(sa, ps->ans, ps->a, ps->b);
+		ps->ans = record_do(ra, ps->ans, ps->a, ps->b);
+		i++;
+		return (check_toptwo(ps, i));
+	}
+	return (i);
 }
 
 char	**sort_divided(t_ps *ps, int i)
 {
-	t_stack	*s;
-	t_dir	dir;
-	int		len;
+	int	n;
+	int	p;
+	int	tmp;
 
 	ft_putendl_fd("start sorting devided", 2);
 	print_stack(ps->b);
-	while (*(ps->b) != NULL && i < ps->list_len)
+	if ((*ps->b) == NULL)
+		return (ps->ans);
+	n = get_stacklen(ps->b) / 2;
+	if (n == 1)
+		n = get_stacklen(ps->b);
+	n += i;
+	p = 0;
+	while (*(ps->b) != NULL && i + p < n && i < ps->list_len)
 	{
-		if ((*ps->b)->val == ps->list[i])
+		if ((*ps->b)->val >= ps->list[i] && (*ps->b)->val <= ps->list[n - 1])
 		{
 			ps->ans = record_do(pa, ps->ans, ps->a, ps->b);
-			ps->ans = record_do(ra, ps->ans, ps->a, ps->b);
+			if ((*ps->a)->val == ps->list[i])
+			{
+				ps->ans = record_do(ra, ps->ans, ps->a, ps->b);
+				i++;
+				tmp = i;
+				i = check_toptwo(ps, i);
+				p -= i - tmp;
+			}
+			else
+				p++;
 			print_stack(ps->a);
-			i++;
 		}
 		else
-		{
-			s = search_minimum_elm(ps->b);
-			len = search_shortest(&dir, ps->b, s);
-			ps->ans = repeat_rotate(dir, len, ps->ans, ps->b);
-		}
+			ps->ans = record_do(rb, ps->ans, ps->a, ps->b);
 	}
-	return (ps->ans);
+	p = 0;
+	while (p < n - i)
+	{
+		ps->ans = record_do(pb, ps->ans, ps->a, ps->b);
+		p++;
+	}
+	return (sort_divided(ps, i));
 }
 
 char	**solve_quick(t_ps *ps)
