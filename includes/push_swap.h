@@ -19,11 +19,16 @@ typedef struct s_ps
 	t_stack	**b;
 	int		*list;
 	int		list_len;
+	char	**ans;
 }	t_ps;
 
 t_ps	*init_ps(void);
 char	**solver_ent(t_ps *ps);
 char	**solver(t_stack **a, t_stack **b);
+t_stack	*search_minimum_elm(t_stack **a);
+t_dir	search_shortest(t_dir *dir, t_stack **top, t_stack *minimum);
+bool	sort_list(t_ps *ps);
+char	**solve_quick(t_ps *ps);
 char	**pb_mininum(t_stack **a, t_stack **b, char **ans);
 char	**solve_two(t_stack **top, char **ans);
 char	**solve_three(t_stack **top, char **ans);

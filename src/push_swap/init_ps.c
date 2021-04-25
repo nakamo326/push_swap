@@ -22,5 +22,7 @@ t_ps	*init_ps(void)
 		exit(EXIT_FAILURE);
 	}
 	*(ps->b) = NULL;
+	ps->list = NULL;
+	ps->ans = NULL;
 	return (ps);
 }

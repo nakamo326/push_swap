@@ -37,20 +37,23 @@ static bool	check_stack(t_stack **a)
 int	main(int argc, char **argv)
 {
 	t_ps	*ps;
-	char	**ans;
 
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
 	ps = init_ps();
-	ans = NULL;
 	if (!is_valid_arg(argv))
 		return (output_error(ps));
 	ps->a = create_stack(argv, ps->a);
 	if (ps->a == NULL)
 		return (output_error(ps));
 	if (!check_stack(ps->a))
-		ans = solver_ent(ps);
-	output_answer(ans);
-	ft_free_split(ans);
+		ps->ans = solver_ent(ps);
+	ft_putendl_fd("-----------result-----------", 2);
+	print_stack(ps->a);
+	print_stack(ps->b);
+	if (check_stack(ps->a))
+		ft_putendl_fd("sorted!", 2);
+	output_answer(ps->ans);
+	ft_free_split(ps->ans);
 	return (wrap_exit(ps));
 }

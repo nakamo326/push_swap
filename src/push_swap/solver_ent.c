@@ -20,6 +20,7 @@ char	**solver_ent(t_ps *ps)
 	else if (len == 6)
 		return (solve_six(ps->a, ps->b, ans));
 	else if (len >= 7)
-		return (solver(ps->a, ps->b));
+		//return (solver(ps->a, ps->b));
+		return (solve_quick(ps));
 	return (NULL);
 }

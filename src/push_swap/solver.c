@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static t_stack	*search_minimum_elm(t_stack **a)
+t_stack	*search_minimum_elm(t_stack **a)
 {
 	t_stack	*s_ptr;
 	t_stack	*minimum;
@@ -18,7 +18,7 @@ static t_stack	*search_minimum_elm(t_stack **a)
 	return (minimum);
 }
 
-static t_dir	search_shortest(t_dir *dir, t_stack **top, t_stack *minimum)
+t_dir	search_shortest(t_dir *dir, t_stack **top, t_stack *minimum)
 {
 	int		n_len;
 	int		p_len;
