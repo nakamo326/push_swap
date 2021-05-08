@@ -37,15 +37,15 @@ static bool	check_stack(t_stack **a)
 int	main(int argc, char **argv)
 {
 	t_ps	*ps;
+	t_stack	**tmp;
 
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
 	ps = init_ps();
-	if (!is_valid_arg(argv))
+	tmp = create_stack(argv, ps->a);
+	if (tmp == NULL)
 		return (output_error(ps));
-	ps->a = create_stack(argv, ps->a);
-	if (ps->a == NULL)
-		return (output_error(ps));
+	ps->a = tmp;
 	if (!check_stack(ps->a))
 		ps->ans = solver_ent(ps);
 	ft_putendl_fd("-----------result-----------", 2);

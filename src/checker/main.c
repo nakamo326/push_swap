@@ -34,15 +34,15 @@ int	main(int argc, char **argv)
 {
 	t_stack	**a;
 	t_stack	**b;
+	t_stack	**tmp;
 
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
 	init_stack(&a, &b);
-	if (!is_valid_arg(argv))
+	tmp = create_stack(argv, a);
+	if (tmp == NULL)
 		return (output_error(a, b));
-	a = create_stack(argv, a);
-	if (a == NULL)
-		return (output_error(NULL, b));
+	a = tmp;
 	run_operation(a, b);
 	check_result(a, b);
 	return (exit_free(a, b));
