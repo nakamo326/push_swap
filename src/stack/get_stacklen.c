@@ -7,7 +7,7 @@ int	get_stacklen(t_stack **top)
 
 	s_ptr = *top;
 	len = 0;
-	while(s_ptr)
+	while (s_ptr)
 	{
 		s_ptr = s_ptr->next;
 		len++;
