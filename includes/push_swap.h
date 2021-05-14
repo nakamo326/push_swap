@@ -20,6 +20,7 @@ typedef struct s_ps
 	int		*list;
 	int		list_len;
 	char	**ans;
+	int		index;
 }	t_ps;
 
 t_ps	*init_ps(void);
