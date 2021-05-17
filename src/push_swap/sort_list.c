@@ -9,7 +9,7 @@ static int	*create_unsorted(t_stack **s, int *listlen)
 	*listlen = get_stacklen(s);
 	list = malloc(sizeof(int) * *listlen);
 	if (list == NULL)
-		return (false);
+		return (NULL);
 	i = 0;
 	s_ptr = *s;
 	while (i < *listlen)
@@ -18,7 +18,7 @@ static int	*create_unsorted(t_stack **s, int *listlen)
 		i++;
 		s_ptr = s_ptr->next;
 	}
-	return (true);
+	return (list);
 }
 
 int	*sort_list(t_stack **s, int	*list)
