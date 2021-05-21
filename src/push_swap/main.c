@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int		wrap_exit(t_ps *ps)
+int	wrap_exit(t_ps *ps)
 {
 	free_stack(ps->a);
 	free_stack(ps->b);
@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 	ft_putendl_fd("-----------result-----------", 2);
 	print_stack(ps->a);
 	print_stack(ps->b);
-	if (check_stack(ps->a))
+	if (check_stack(ps->a) && *ps->b == NULL)
 		ft_putendl_fd("sorted!", 2);
 	output_answer(ps->ans);
 	ft_free_split(ps->ans);

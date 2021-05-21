@@ -29,7 +29,7 @@ char	**solver(t_stack **a, t_stack **b);
 t_stack	*search_minimum_elm(t_stack **a);
 t_dir	search_shortest(t_dir *dir, t_stack **top, t_stack *minimum);
 int		*sort_list(t_stack **s, int	*list);
-char	**solve_quick(t_ps *ps);
+char	**solve_half(t_ps *ps);
 char	**pb_mininum(t_stack **a, t_stack **b, char **ans);
 char	**solve_two(t_stack **top, char **ans);
 char	**solve_three(t_stack **top, char **ans);
