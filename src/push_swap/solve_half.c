@@ -23,8 +23,6 @@ static void	sort_second_half(t_ps *ps, int end)
 		j++;
 	}
 	ps->index = i;
-	print_stack(ps->a);
-	print_stack(ps->b);
 	if (ps->index < end)
 		sort_first_half(ps, i, end);
 }
