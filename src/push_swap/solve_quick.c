@@ -6,18 +6,18 @@ static void	sort_second_half(t_ps *ps, int end)
 {
 	int	j;
 
-	if (ps->index >= end)
+	if (ps->i >= end)
 		return ;
-	j = ps->index;
-	while (j < end && ps->index != end)
+	j = ps->i;
+	while (j < end && ps->i != end)
 	{
-		if ((*ps->a)->val == ps->list[ps->index])
+		if ((*ps->a)->val == ps->list[ps->i])
 		{
 			ps->ans = record_do(ra, ps->ans, ps->a, ps->b);
-			(ps->index)++;
+			(ps->i)++;
 		}
-		else if (j + 2 != end && (*ps->a)->next->val == ps->list[ps->index]
-			&& (*ps->a)->val == ps->list[ps->index + 1])
+		else if (j + 2 != end && (*ps->a)->next->val == ps->list[ps->i]
+			&& (*ps->a)->val == ps->list[ps->i + 1])
 		{
 			ps->ans = record_do(sa, ps->ans, ps->a, ps->b);
 			continue ;
@@ -26,8 +26,8 @@ static void	sort_second_half(t_ps *ps, int end)
 			ps->ans = record_do(pb, ps->ans, ps->a, ps->b);
 		j++;
 	}
-	if (ps->index < end)
-		sort_first_half(ps, ps->index, end);
+	if (ps->i < end)
+		sort_first_half(ps, ps->i, end);
 }
 
 static void	sort_first_half(t_ps *ps, int start, int end)
@@ -35,7 +35,7 @@ static void	sort_first_half(t_ps *ps, int start, int end)
 	int	j;
 	int	m;
 
-	if (*ps->b == NULL || ps->index >= end || start > end)
+	if (*ps->b == NULL || ps->i >= end || start > end)
 		return ;
 	m = (end - start) / 2;
 	j = start;
@@ -43,11 +43,11 @@ static void	sort_first_half(t_ps *ps, int start, int end)
 	{
 		if ((*ps->b)->val >= ps->list[start + m])
 			ps->ans = record_do(pa, ps->ans, ps->a, ps->b);
-		else if ((*ps->b)->val == ps->list[ps->index])
+		else if ((*ps->b)->val == ps->list[ps->i])
 		{
 			ps->ans = record_do(pa, ps->ans, ps->a, ps->b);
 			ps->ans = record_do(ra, ps->ans, ps->a, ps->b);
-			(ps->index)++;
+			(ps->i)++;
 		}
 		else
 			ps->ans = record_do(rb, ps->ans, ps->a, ps->b);
@@ -57,24 +57,18 @@ static void	sort_first_half(t_ps *ps, int start, int end)
 	sort_second_half(ps, end);
 }
 
-static void	set_tmp(t_ps *ps, int start, int end)
+static void	set_tmp(t_ps *ps, int i, int end)
 {
-	t_stack	*s;
-	int		i;
-
-	s = *ps->a;
-	i = start;
 	while (i < end)
 	{
-		if ((s->val <= ps->list[end - 1]))
+		if (((*ps->a)->val <= ps->list[end - 1]))
 		{
-			ps->ans = record_do(pb, ps->ans, &s, ps->b);
+			ps->ans = record_do(pb, ps->ans, ps->a, ps->b);
 			i++;
 		}
 		else
-			ps->ans = record_do(ra, ps->ans, &s, ps->b);
+			ps->ans = record_do(ra, ps->ans, ps->a, ps->b);
 	}
-	*ps->a = s;
 }
 
 char	**solve_quick(t_ps *ps)

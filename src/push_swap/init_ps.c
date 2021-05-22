@@ -24,6 +24,6 @@ t_ps	*init_ps(void)
 	*(ps->b) = NULL;
 	ps->list = NULL;
 	ps->ans = NULL;
-	ps->index = 0;
+	ps->i = 0;
 	return (ps);
 }
