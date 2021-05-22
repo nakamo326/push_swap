@@ -37,6 +37,11 @@ char	**solve_four(t_stack **a, t_stack **b, char **ans);
 char	**solve_five(t_stack **a, t_stack **b, char **ans);
 char	**solve_six(t_stack **a, t_stack **b, char **ans);
 char	**record_do(t_op op, char **ans, t_stack **a, t_stack **b);
+bool	merge_operation(t_ps *ps);
+bool	is_able_merge(char *op, char *next);
+bool	is_able_delete(char *op, char *next);
+char	**convert_rr(char **ans, int i);
+char	**delete_pp(char **ans, int i);
 void	output_answer(char	**ans);
 
 #endif

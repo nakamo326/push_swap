@@ -12,6 +12,8 @@ CHKRSRC =	src/checker/check_result.c \
 
 P_SSRC =	src/push_swap/init_ps.c \
 			src/push_swap/main.c \
+			src/push_swap/merge_op_utils.c \
+			src/push_swap/merge_operation.c \
 			src/push_swap/output_answer.c \
 			src/push_swap/record_operation.c \
 			src/push_swap/solve_half.c \

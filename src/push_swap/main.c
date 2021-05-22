@@ -49,6 +49,7 @@ int	main(int argc, char **argv)
 	ps->a = tmp;
 	if (!check_stack(ps->a))
 		ps->ans = solver_ent(ps);
+	merge_operation(ps);
 	output_answer(ps->ans);
 	ft_free_split(ps->ans);
 	return (wrap_exit(ps));
