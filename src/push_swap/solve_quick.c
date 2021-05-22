@@ -4,27 +4,30 @@ static void	sort_first_half(t_ps *ps, int start, int end);
 
 static void	sort_second_half(t_ps *ps, int end)
 {
-	int	i;
 	int	j;
 
 	if (ps->index >= end)
 		return ;
-	i = ps->index;
-	j = i;
-	while (j < end && i != end)
+	j = ps->index;
+	while (j < end && ps->index != end)
 	{
-		if ((*ps->a)->val == ps->list[i])
+		if ((*ps->a)->val == ps->list[ps->index])
 		{
 			ps->ans = record_do(ra, ps->ans, ps->a, ps->b);
-			i++;
+			(ps->index)++;
+		}
+		else if (j + 2 != end && (*ps->a)->next->val == ps->list[ps->index]
+			&& (*ps->a)->val == ps->list[ps->index + 1])
+		{
+			ps->ans = record_do(sa, ps->ans, ps->a, ps->b);
+			continue ;
 		}
 		else
 			ps->ans = record_do(pb, ps->ans, ps->a, ps->b);
 		j++;
 	}
-	ps->index = i;
 	if (ps->index < end)
-		sort_first_half(ps, i, end);
+		sort_first_half(ps, ps->index, end);
 }
 
 static void	sort_first_half(t_ps *ps, int start, int end)
@@ -74,7 +77,7 @@ static void	set_tmp(t_ps *ps, int start, int end)
 	*ps->a = s;
 }
 
-char	**solve_half(t_ps *ps)
+char	**solve_quick(t_ps *ps)
 {
 	int	size;
 
