@@ -4,6 +4,7 @@ int	wrap_exit(t_ps *ps)
 {
 	free_stack(ps->a);
 	free_stack(ps->b);
+	free(ps->list);
 	free(ps);
 	return (EXIT_SUCCESS);
 }
@@ -48,11 +49,6 @@ int	main(int argc, char **argv)
 	ps->a = tmp;
 	if (!check_stack(ps->a))
 		ps->ans = solver_ent(ps);
-	ft_putendl_fd("-----------result-----------", 2);
-	print_stack(ps->a);
-	print_stack(ps->b);
-	if (check_stack(ps->a) && *ps->b == NULL)
-		ft_putendl_fd("sorted!", 2);
 	output_answer(ps->ans);
 	ft_free_split(ps->ans);
 	return (wrap_exit(ps));
