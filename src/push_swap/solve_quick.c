@@ -50,6 +50,7 @@ static void	sort_first_half(t_ps *ps, int start, int end)
 			(ps->i)++;
 		}
 		else
+		// choose rb or rrb
 			ps->ans = record_do(rb, ps);
 		j++;
 	}
@@ -57,30 +58,41 @@ static void	sort_first_half(t_ps *ps, int start, int end)
 	sort_second_half(ps, end);
 }
 
-static void	set_tmp(t_ps *ps, int i, int end)
+static void	set_first(t_ps *ps, int size)
 {
-	while (i < end)
+	t_op	dir;
+	int		i;
+
+	dir = set_dir(ps, size);
+	i = 0;
+	while (i < size)
 	{
-		if (((*ps->a)->val <= ps->list[end - 1]))
+		if (((*ps->a)->val <= ps->list[size - 1]))
 		{
 			ps->ans = record_do(pb, ps);
 			i++;
 		}
 		else
-			ps->ans = record_do(ra, ps);
+			ps->ans = record_do(dir, ps);
 	}
 }
 
 t_op	*solve_quick(t_ps *ps)
 {
 	int	size;
+	int	i;
 
 	ps->list = sort_list(ps->a, ps->list);
 	ps->list_len = get_stacklen(ps->a);
 	size = ps->list_len / 2;
-	set_tmp(ps, 0, size);
+	set_first(ps, size);
 	sort_first_half(ps, 0, size);
-	set_tmp(ps, size, ps->list_len);
+	i = size;
+	while (i < ps->list_len)
+	{
+		ps->ans = record_do(pb, ps);
+		i++;
+	}
 	sort_first_half(ps, size, ps->list_len);
 	return (ps->ans);
 }
