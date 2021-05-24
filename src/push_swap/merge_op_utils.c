@@ -1,50 +1,40 @@
 #include "push_swap.h"
 
-bool	is_able_merge(char *op, char *next)
+bool	is_able_merge(t_op op, t_op next)
 {
-	if (!ft_strncmp(op, "ra", 3) && !ft_strncmp(next, "rb", 3))
-		return (true);
-	else if (!ft_strncmp(op, "rb", 3) && !ft_strncmp(next, "ra", 3))
+	if ((op == ra && next == rb) || (op == ra && next == rb))
 		return (true);
 	return (false);
 }
 
-bool	is_able_delete(char *op, char *next)
+bool	is_able_delete(t_op op, t_op next)
 {
-	if (!ft_strncmp(op, "pa", 3) && !ft_strncmp(next, "pb", 3))
-		return (true);
-	else if (!ft_strncmp(op, "pb", 3) && !ft_strncmp(next, "pa", 3))
+	if ((op == pa && next == pb) || (op == pa && next == pb))
 		return (true);
 	return (false);
 }
 
-char	**convert_rr(char **ans, int i)
+t_op	*convert_rr(t_op *ans, int i)
 {
-	free(ans[i]);
-	free(ans[i + 1]);
-	ans[i] = ft_strdup("rr");
-	if (ans[i] == NULL)
-		return (NULL);
+	ans[i] = rr;
 	i++;
-	while (ans[i + 1] != NULL)
+	while (ans[i + 1] != err)
 	{
 		ans[i] = ans[i + 1];
 		i++;
 	}
-	ans[i] = NULL;
+	ans[i] = err;
 	return (ans);
 }
 
-char	**delete_pp(char **ans, int i)
+t_op	*delete_pp(t_op *ans, int i)
 {
-	free(ans[i]);
-	free(ans[i + 1]);
-	while (ans[i + 2] != NULL)
+	while (ans[i + 2] != err)
 	{
 		ans[i] = ans[i + 2];
-		ans[i + 2] = NULL;
+		ans[i + 2] = err;
 		i++;
 	}
-	ans[i] = NULL;
+	ans[i] = err;
 	return (ans);
 }

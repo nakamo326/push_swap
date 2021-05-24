@@ -5,25 +5,20 @@ t_ps	*init_ps(void)
 	t_ps	*ps;
 
 	ps = malloc(sizeof(t_ps));
-	if (ps == NULL)
-		exit(EXIT_FAILURE);
 	ps->a = malloc(sizeof(t_stack *));
-	if (ps->a == NULL)
-	{
-		free(ps);
-		exit(EXIT_FAILURE);
-	}
-	*(ps->a) = NULL;
 	ps->b = malloc(sizeof(t_stack *));
-	if (ps->b == NULL)
+	ps->ans = malloc(sizeof(t_op) * 20000);
+	if (!ps || !ps->a || !ps->b || !ps->ans)
 	{
 		free(ps->a);
 		free(ps);
 		exit(EXIT_FAILURE);
 	}
+	*(ps->a) = NULL;
 	*(ps->b) = NULL;
+	ps->ans[0] = err;
 	ps->list = NULL;
-	ps->ans = NULL;
 	ps->i = 0;
+	ps->ans_size = 20000;
 	return (ps);
 }

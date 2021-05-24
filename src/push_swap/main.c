@@ -5,6 +5,7 @@ int	wrap_exit(t_ps *ps)
 	free_stack(ps->a);
 	free_stack(ps->b);
 	free(ps->list);
+	free(ps->ans);
 	free(ps);
 	return (EXIT_SUCCESS);
 }
@@ -51,6 +52,5 @@ int	main(int argc, char **argv)
 		ps->ans = solver_ent(ps);
 	merge_operation(ps);
 	output_answer(ps->ans);
-	ft_free_split(ps->ans);
 	return (wrap_exit(ps));
 }

@@ -1,13 +1,13 @@
 #include "push_swap.h"
 
-char	**solve_two(t_stack **top, char **ans)
+t_op	*solve_two(t_stack **top, t_op *ans)
 {
 	if ((*top)->val > (*top)->next->val)
 		ans = record_do(ra, ans, top, NULL);
 	return (ans);
 }
 
-char	**solve_three(t_stack **top, char **ans)
+t_op	*solve_three(t_stack **top, t_op *ans)
 {
 	const int	first = (*top)->val;
 	const int	second = (*top)->next->val;
@@ -32,7 +32,7 @@ char	**solve_three(t_stack **top, char **ans)
 	return (ans);
 }
 
-char	**solve_four(t_stack **a, t_stack **b, char **ans)
+t_op	*solve_four(t_stack **a, t_stack **b, t_op *ans)
 {
 	ans = pb_mininum(a, b, ans);
 	ans = solve_three(a, ans);
@@ -40,7 +40,7 @@ char	**solve_four(t_stack **a, t_stack **b, char **ans)
 	return (ans);
 }
 
-char	**solve_five(t_stack **a, t_stack **b, char **ans)
+t_op	*solve_five(t_stack **a, t_stack **b, t_op *ans)
 {
 	ans = pb_mininum(a, b, ans);
 	ans = solve_four(a, b, ans);
@@ -48,7 +48,7 @@ char	**solve_five(t_stack **a, t_stack **b, char **ans)
 	return (ans);
 }
 
-char	**solve_six(t_stack **a, t_stack **b, char **ans)
+t_op	*solve_six(t_stack **a, t_stack **b, t_op *ans)
 {
 	ans = pb_mininum(a, b, ans);
 	ans = solve_five(a, b, ans);

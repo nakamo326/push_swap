@@ -71,7 +71,7 @@ static void	set_tmp(t_ps *ps, int i, int end)
 	}
 }
 
-char	**solve_quick(t_ps *ps)
+t_op	*solve_quick(t_ps *ps)
 {
 	int	size;
 

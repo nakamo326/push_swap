@@ -10,13 +10,25 @@ static char	*convert_op(t_op op)
 	return (str_set[op]);
 }
 
-char	**record_do(t_op op, char **ans, t_stack **a, t_stack **b)
+static bool add_answer(t_op *ans, t_op op)
+{
+	int	i;
+
+	i = 0;
+	while (ans[i] != err)
+		i++;
+	ans[i] = op;
+	ans[i + 1] = err;
+	//size extension
+	return (true);
+}
+
+t_op	*record_do(t_op op, t_op *ans, t_stack **a, t_stack **b)
 {
 	char	*str;
 
 	str = convert_op(op);
-	ans = ft_addstr_split(ans, str);
-	if (ans == NULL)
+	if (!add_answer(ans, op))
 		return (NULL);
 	do_operation(str, a, b);
 	return (ans);

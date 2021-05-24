@@ -47,7 +47,7 @@ t_dir	search_shortest(t_dir *dir, t_stack **top, t_stack *minimum)
 	return (p_len);
 }
 
-static char	**repeat_rotate(t_dir dir, int len, char **ans, t_stack **a)
+static t_op	*repeat_rotate(t_dir dir, int len, t_op *ans, t_stack **a)
 {
 	int		i;
 	t_op	op;
@@ -67,7 +67,7 @@ static char	**repeat_rotate(t_dir dir, int len, char **ans, t_stack **a)
 	return (ans);
 }
 
-char	**pb_mininum(t_stack **a, t_stack **b, char **ans)
+t_op	*pb_mininum(t_stack **a, t_stack **b, t_op *ans)
 {
 	t_stack	*s;
 	t_dir	dir;
@@ -77,25 +77,5 @@ char	**pb_mininum(t_stack **a, t_stack **b, char **ans)
 	len = search_shortest(&dir, a, s);
 	ans = repeat_rotate(dir, len, ans, a);
 	ans = record_do(pb, ans, a, b);
-	return (ans);
-}
-
-char	**solver(t_stack **a, t_stack **b)
-{
-	char	**ans;
-
-	ans = NULL;
-	while (*a != (*a)->next)
-	{
-		ans = pb_mininum(a, b, ans);
-		if (ans == NULL)
-			return (NULL);
-	}
-	while (*b != NULL)
-	{
-		ans = record_do(pa, ans, a, b);
-		if (ans == NULL)
-			return (NULL);
-	}
 	return (ans);
 }

@@ -5,7 +5,7 @@ bool	is_possible_to_short(t_ps *ps)
 	int	i;
 
 	i = 0;
-	while (ps->ans != NULL && ps->ans[i] != NULL && ps->ans[i + 1] != NULL)
+	while (ps->ans != NULL && ps->ans[i] != err && ps->ans[i + 1] != err)
 	{
 		if (is_able_merge(ps->ans[i], ps->ans[i + 1]))
 			return (true);
@@ -23,7 +23,7 @@ bool	merge_operation(t_ps *ps)
 	if (!is_possible_to_short(ps))
 		return (true);
 	i = 0;
-	while (ps->ans != NULL && ps->ans[i] != NULL && ps->ans[i + 1] != NULL)
+	while (ps->ans != NULL && ps->ans[i] != err && ps->ans[i + 1] != err)
 	{
 		if (is_able_merge(ps->ans[i], ps->ans[i + 1]))
 			ps->ans = convert_rr(ps->ans, i);
