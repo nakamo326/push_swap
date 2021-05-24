@@ -19,7 +19,7 @@ P_SSRC =	src/push_swap/init_ps.c \
 			src/push_swap/solve_quick.c \
 			src/push_swap/solve_short.c \
 			src/push_swap/solver_ent.c \
-			src/push_swap/solver.c \
+			src/push_swap/solver_utils.c \
 			src/push_swap/sort_list.c
 
 STCKSRC =	src/stack/create_stack.c \

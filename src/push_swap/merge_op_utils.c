@@ -2,14 +2,14 @@
 
 bool	is_able_merge(t_op op, t_op next)
 {
-	if ((op == ra && next == rb) || (op == ra && next == rb))
+	if ((op == ra && next == rb) || (op == rb && next == ra))
 		return (true);
 	return (false);
 }
 
 bool	is_able_delete(t_op op, t_op next)
 {
-	if ((op == pa && next == pb) || (op == pa && next == pb))
+	if ((op == pa && next == pb) || (op == pb && next == pa))
 		return (true);
 	return (false);
 }

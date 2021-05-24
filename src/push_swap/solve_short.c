@@ -1,57 +1,57 @@
 #include "push_swap.h"
 
-t_op	*solve_two(t_stack **top, t_op *ans)
+t_op	*solve_two(t_ps *ps)
 {
-	if ((*top)->val > (*top)->next->val)
-		ans = record_do(ra, ans, top, NULL);
-	return (ans);
+	if ((*ps->a)->val > (*ps->a)->next->val)
+		ps->ans = record_do(ra, ps);
+	return (ps->ans);
 }
 
-t_op	*solve_three(t_stack **top, t_op *ans)
+t_op	*solve_three(t_stack **top, t_ps *ps)
 {
 	const int	first = (*top)->val;
 	const int	second = (*top)->next->val;
 	const int	third = (*top)->next->next->val;
 
 	if (first > second && second < third && first < third)
-		return (record_do(sa, ans, top, NULL));
+		return (record_do(sa, ps));
 	else if (first < second && second > third && first > third)
-		return (record_do(rra, ans, top, NULL));
+		return (record_do(rra, ps));
 	else if (first > second && second < third && first > third)
-		return (record_do(ra, ans, top, NULL));
+		return (record_do(ra, ps));
 	else if (first > second && second > third && first > third)
 	{
-		ans = record_do(ra, ans, top, NULL);
-		return (record_do(sa, ans, top, NULL));
+		ps->ans = record_do(ra, ps);
+		return (record_do(sa, ps));
 	}
 	else if (first < second && second > third && first < third)
 	{
-		ans = record_do(sa, ans, top, NULL);
-		return (record_do(ra, ans, top, NULL));
+		ps->ans = record_do(sa, ps);
+		return (record_do(ra, ps));
 	}
-	return (ans);
+	return (ps->ans);
 }
 
-t_op	*solve_four(t_stack **a, t_stack **b, t_op *ans)
+t_op	*solve_four(t_ps *ps)
 {
-	ans = pb_mininum(a, b, ans);
-	ans = solve_three(a, ans);
-	ans = record_do(pa, ans, a, b);
-	return (ans);
+	ps->ans = pb_mininum(ps);
+	ps->ans = solve_three(ps->a, ps);
+	ps->ans = record_do(pa, ps);
+	return (ps->ans);
 }
 
-t_op	*solve_five(t_stack **a, t_stack **b, t_op *ans)
+t_op	*solve_five(t_ps *ps)
 {
-	ans = pb_mininum(a, b, ans);
-	ans = solve_four(a, b, ans);
-	ans = record_do(pa, ans, a, b);
-	return (ans);
+	ps->ans = pb_mininum(ps);
+	ps->ans = solve_four(ps);
+	ps->ans = record_do(pa, ps);
+	return (ps->ans);
 }
 
-t_op	*solve_six(t_stack **a, t_stack **b, t_op *ans)
+t_op	*solve_six(t_ps *ps)
 {
-	ans = pb_mininum(a, b, ans);
-	ans = solve_five(a, b, ans);
-	ans = record_do(pa, ans, a, b);
-	return (ans);
+	ps->ans = pb_mininum(ps);
+	ps->ans = solve_five(ps);
+	ps->ans = record_do(pa, ps);
+	return (ps->ans);
 }

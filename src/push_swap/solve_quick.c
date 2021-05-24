@@ -13,17 +13,17 @@ static void	sort_second_half(t_ps *ps, int end)
 	{
 		if ((*ps->a)->val == ps->list[ps->i])
 		{
-			ps->ans = record_do(ra, ps->ans, ps->a, ps->b);
+			ps->ans = record_do(ra, ps);
 			(ps->i)++;
 		}
 		else if (j + 2 != end && (*ps->a)->next->val == ps->list[ps->i]
 			&& (*ps->a)->val == ps->list[ps->i + 1])
 		{
-			ps->ans = record_do(sa, ps->ans, ps->a, ps->b);
+			ps->ans = record_do(sa, ps);
 			continue ;
 		}
 		else
-			ps->ans = record_do(pb, ps->ans, ps->a, ps->b);
+			ps->ans = record_do(pb, ps);
 		j++;
 	}
 	if (ps->i < end)
@@ -42,15 +42,15 @@ static void	sort_first_half(t_ps *ps, int start, int end)
 	while (*ps->b != NULL && j < end)
 	{
 		if ((*ps->b)->val >= ps->list[start + m])
-			ps->ans = record_do(pa, ps->ans, ps->a, ps->b);
+			ps->ans = record_do(pa, ps);
 		else if ((*ps->b)->val == ps->list[ps->i])
 		{
-			ps->ans = record_do(pa, ps->ans, ps->a, ps->b);
-			ps->ans = record_do(ra, ps->ans, ps->a, ps->b);
+			ps->ans = record_do(pa, ps);
+			ps->ans = record_do(ra, ps);
 			(ps->i)++;
 		}
 		else
-			ps->ans = record_do(rb, ps->ans, ps->a, ps->b);
+			ps->ans = record_do(rb, ps);
 		j++;
 	}
 	sort_first_half(ps, start, start + m);
@@ -63,11 +63,11 @@ static void	set_tmp(t_ps *ps, int i, int end)
 	{
 		if (((*ps->a)->val <= ps->list[end - 1]))
 		{
-			ps->ans = record_do(pb, ps->ans, ps->a, ps->b);
+			ps->ans = record_do(pb, ps);
 			i++;
 		}
 		else
-			ps->ans = record_do(ra, ps->ans, ps->a, ps->b);
+			ps->ans = record_do(ra, ps);
 	}
 }
 
