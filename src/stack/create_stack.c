@@ -89,26 +89,24 @@ t_stack	**create_stack(char **argv, t_stack **top)
 {
 	long long	value;
 	int			i;
-	t_stack		**tmp;
 
 	i = 1;
 	while (argv[i] != NULL)
 	{
-		tmp = top;
 		if (is_able_to_split(argv[i]))
 		{
 			top = add_split(argv[i], top);
 			if (top == NULL)
-				return (free_stack(tmp));
+				return (NULL);
 			i++;
 			continue ;
 		}
 		if (!is_valid_num(argv[i], top))
-			return (free_stack(top));
+			return (NULL);
 		value = ft_atoll(argv[i]);
 		*top = add_bottom(top, (int)value);
 		if (*top == NULL)
-			return (free_stack(tmp));
+			return (NULL);
 		i++;
 	}
 	return (top);

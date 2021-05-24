@@ -39,15 +39,13 @@ CHKROBJS = $(addprefix $(OBJDIR)/, $(CHKRSRC:.c=.o))
 P_SOBJS = $(addprefix $(OBJDIR)/, $(P_SSRC:.c=.o))
 STCKOBJS = $(addprefix $(OBJDIR)/, $(STCKSRC:.c=.o))
 
-TEST = $(notdir $(basename $(SRCFILE)))
-
 all: $(CHECKER) $(P_S)
 
 $(CHECKER): $(CHKROBJS) $(STCKOBJS) $(LIBFT)
-	gcc -g $^ $(INCLUDES) -o $@
+	gcc -g $(CFLAGS) $^ $(INCLUDES) -o $@
 
 $(P_S): $(P_SOBJS) $(STCKOBJS) $(LIBFT)
-	gcc -g $^ $(INCLUDES) -o $@
+	gcc -g $(CFLAGS) $^ $(INCLUDES) -o $@
 
 $(LIBFT):
 	$(MAKE) bonus -C ./libft
