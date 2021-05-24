@@ -42,6 +42,7 @@ char	**delete_pp(char **ans, int i)
 	while (ans[i + 2] != NULL)
 	{
 		ans[i] = ans[i + 2];
+		ans[i + 2] = NULL;
 		i++;
 	}
 	ans[i] = NULL;
