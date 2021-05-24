@@ -56,12 +56,12 @@ $(OBJDIR)/%.o: %.c
 
 clean:
 	$(MAKE) clean -C ./libft
-	$(RM) -rf $(OBJDIR)
+	$(RM) -r $(OBJDIR)
 
 fclean:
 	$(MAKE) fclean -C ./libft
 	$(RM) $(CHECKER) $(P_S)
-	$(RM) -rf $(OBJDIR)
+	$(RM) -r $(OBJDIR)
 
 re: fclean all
 
