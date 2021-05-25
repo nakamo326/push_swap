@@ -30,6 +30,30 @@ static void	sort_second_half(t_ps *ps, int end)
 		sort_first_half(ps, ps->i, end);
 }
 
+static bool	check_val(t_ps *ps, int *j, int end)
+{
+	if ((*ps->b)->val == ps->list[ps->i])
+	{
+		ps->ans = record_do(pa, ps);
+		ps->ans = record_do(ra, ps);
+		(*j)++;
+		(ps->i)++;
+		return (true);
+	}
+	else if (*j + 2 != end && (*ps->b)->val == ps->list[ps->i + 1]
+		&& (*ps->b)->next->val == ps->list[ps->i])
+	{
+		ps->ans = record_do(pa, ps);
+		ps->ans = record_do(pa, ps);
+		ps->ans = record_do(ra, ps);
+		ps->ans = record_do(ra, ps);
+		*j = *j + 2;
+		ps->i = ps->i + 2;
+		return (true);
+	}
+	return (false);
+}
+
 static void	sort_first_half(t_ps *ps, int start, int end)
 {
 	int		j;
@@ -41,23 +65,8 @@ static void	sort_first_half(t_ps *ps, int start, int end)
 	j = start;
 	while (*ps->b != NULL && j < end)
 	{
-		if ((*ps->b)->val == ps->list[ps->i])
-		{
-			ps->ans = record_do(pa, ps);
-			ps->ans = record_do(ra, ps);
-			(ps->i)++;
-		}
-		else if (j + 2 != end && (*ps->b)->val == ps->list[ps->i + 1]
-			&& (*ps->b)->next->val == ps->list[ps->i])
-		{
-			ps->ans = record_do(pa, ps);
-			ps->ans = record_do(pa, ps);
-			ps->ans = record_do(ra, ps);
-			ps->ans = record_do(ra, ps);
-			j = j + 2;
-			ps->i = ps->i + 2;
-			continue ;
-		}
+		if (check_val(ps, &j, end))
+			continue;
 		else if ((*ps->b)->val >= ps->list[start + m])
 			ps->ans = record_do(pa, ps);
 		else
@@ -70,10 +79,8 @@ static void	sort_first_half(t_ps *ps, int start, int end)
 
 static void	set_first(t_ps *ps, int size)
 {
-	//t_op	dir;
 	int		i;
 
-	//dir = set_dir_a(ps, size);
 	i = 0;
 	while (i < size)
 	{

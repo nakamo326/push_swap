@@ -38,9 +38,8 @@ t_op	*solve_quick(t_ps *ps);
 t_op	set_dir_a(t_ps *ps, int size);
 t_op	set_dir_b(t_stack **b, int m, int s_len);
 bool	merge_operation(t_ps *ps);
-bool	is_able_merge(t_op op, t_op next);
-bool	is_able_delete(t_op op, t_op next);
 t_op	*convert_rr(t_op *ans, int i);
+t_op	*convert_rrr(t_op *ans, int i);
 t_op	*delete_pp(t_op *ans, int i);
 void	output_answer(t_op *ans);
 

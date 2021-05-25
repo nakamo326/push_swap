@@ -80,16 +80,10 @@ t_op	set_dir_b(t_stack **b, int m, int s_len)
 	i = 0;
 	sum[0] = 0;
 	while (i < m)
-	{
-		sum[0] += mark_list[i];
-		i++;
-	}
+		sum[0] += mark_list[i++];
 	sum[1] = 0;
 	while (i < s_len)
-	{
-		sum[1] += mark_list[i];
-		i++;
-	}
+		sum[1] += mark_list[i++];
 	if (sum[0] <= sum[1])
 		return (rrb);
 	return (rb);
