@@ -48,6 +48,6 @@ int	main(int argc, char **argv)
 		return (output_error(s[0], s[1]));
 	s[0] = s[2];
 	run_operation(s[0], s[1], op_flag);
-	check_result(s[0], s[1]);
+	check_result(s[0], s[1], op_flag[1]);
 	return (exit_free(s[0], s[1]));
 }
