@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static int	*mark_target(t_ps *ps, int size, int *list)
+static int	*mark_target_a(t_ps *ps, int size, int *list)
 {
 	int		i;
 	t_stack	*s;
@@ -9,7 +9,7 @@ static int	*mark_target(t_ps *ps, int size, int *list)
 	s = *ps->a;
 	while (i < ps->list_len)
 	{
-		if ((s->val <= ps->list[size - 1]))
+		if (s->val <= ps->list[size - 1])
 			list[i] = 1;
 		s = s->next;
 		i++;
@@ -17,15 +17,15 @@ static int	*mark_target(t_ps *ps, int size, int *list)
 	return (list);
 }
 
-t_op	set_dir(t_ps *ps, int size)
+t_op	set_dir_a(t_ps *ps, int size)
 {
 	int	*list;
 	int	first;
 	int	second;
 	int	i;
 
-	list = calloc(ps->list_len, sizeof(int));
-	list = mark_target(ps, size, list);
+	list = ft_calloc(ps->list_len, sizeof(int));
+	list = mark_target_a(ps, size, list);
 	i = 0;
 	first = 0;
 	while (i < size)
@@ -40,6 +40,57 @@ t_op	set_dir(t_ps *ps, int size)
 		i++;
 	}
 	if (first <= second)
-		return (ra);
-	return (ra);//rra
+		return (rra);
+	return (ra);
+}
+
+static int	*mark_target_b(t_stack **b, int *s_list, int s_len, int m)
+{
+	int		*mark_list;
+	t_stack	*s;
+	int		i;
+
+	mark_list = ft_calloc(s_len, sizeof(int));
+	if (!s_list || !mark_list)
+		return (NULL);
+	s = *b;
+	i = 0;
+	while (i < s_len)
+	{
+		if (s->val >= s_list[m])
+			mark_list[i] = 1;
+		s = s->next;
+		i++;
+	}
+	return (mark_list);
+}
+
+t_op	set_dir_b(t_stack **b, int m, int s_len)
+{
+	int	*sorted_list;
+	int	*mark_list;
+	int	i;
+	int	sum[2];
+
+	sorted_list = NULL;
+	sorted_list = sort_list(b, sorted_list);
+	mark_list = mark_target_b(b, sorted_list, s_len, m);
+	if (!sorted_list || !mark_list)
+		return (err);
+	i = 0;
+	sum[0] = 0;
+	while (i < m)
+	{
+		sum[0] += mark_list[i];
+		i++;
+	}
+	sum[1] = 0;
+	while (i < s_len)
+	{
+		sum[1] += mark_list[i];
+		i++;
+	}
+	if (sum[0] <= sum[1])
+		return (rrb);
+	return (rb);
 }
