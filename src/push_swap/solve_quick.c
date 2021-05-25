@@ -66,7 +66,7 @@ static void	sort_first_half(t_ps *ps, int start, int end)
 	while (*ps->b != NULL && j < end)
 	{
 		if (check_val(ps, &j, end))
-			continue;
+			continue ;
 		else if ((*ps->b)->val >= ps->list[start + m])
 			ps->ans = record_do(pa, ps);
 		else
