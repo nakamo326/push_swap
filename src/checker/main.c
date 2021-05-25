@@ -32,18 +32,20 @@ static void	init_stack(t_stack ***a, t_stack ***b)
 
 int	main(int argc, char **argv)
 {
-	t_stack	**a;
-	t_stack	**b;
-	t_stack	**tmp;
+	t_stack	**s[3];
+	int		i;
+	bool	op_flag[1];
+
 
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
-	init_stack(&a, &b);
-	tmp = create_stack(argv, a);
-	if (tmp == NULL)
-		return (output_error(a, b));
-	a = tmp;
-	run_operation(a, b);
-	check_result(a, b);
-	return (exit_free(a, b));
+	init_stack(&s[0], &s[1]);
+	i = get_option(argv, op_flag);
+	s[2] = create_stack(argv, s[0], i);
+	if (s[2] == NULL)
+		return (output_error(s[0], s[1]));
+	s[0] = s[2];
+	run_operation(s[0], s[1]);
+	check_result(s[0], s[1]);
+	return (exit_free(s[0], s[1]));
 }

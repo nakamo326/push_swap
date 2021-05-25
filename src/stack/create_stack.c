@@ -85,12 +85,10 @@ static t_stack	**add_split(char *arg, t_stack **top)
 	return (top);
 }
 
-t_stack	**create_stack(char **argv, t_stack **top)
+t_stack	**create_stack(char **argv, t_stack **top, int i)
 {
 	long long	value;
-	int			i;
 
-	i = 1;
 	while (argv[i] != NULL)
 	{
 		if (is_able_to_split(argv[i]))

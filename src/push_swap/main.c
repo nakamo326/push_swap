@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
 	ps = init_ps();
-	tmp = create_stack(argv, ps->a);
+	tmp = create_stack(argv, ps->a, 1);
 	if (tmp == NULL)
 		return (output_error(ps));
 	ps->a = tmp;

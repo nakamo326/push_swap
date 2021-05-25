@@ -6,6 +6,7 @@ LIBFT = ./libft/libft.a
 
 CHKRSRC =	src/checker/check_result.c \
 			src/checker/get_next_line.c \
+			src/checker/get_option.c \
 			src/checker/main.c \
 			src/checker/output_message.c \
 			src/checker/run_operation.c

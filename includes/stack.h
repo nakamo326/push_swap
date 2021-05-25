@@ -29,7 +29,7 @@ typedef enum e_op
 	rrr
 }	t_op;
 
-t_stack	**create_stack(char **argv, t_stack **top);
+t_stack	**create_stack(char **argv, t_stack **top, int i);
 t_stack	*create_newelm(int value);
 t_stack	*add_top(t_stack **top, int value);
 t_stack	*add_bottom(t_stack **top, int value);
