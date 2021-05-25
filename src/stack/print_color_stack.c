@@ -9,14 +9,21 @@
 #define WHITE	"\033[37m"
 #define RESET	"\033[m"
 
-static void put_colorval(int val)
+//s ...blue, p ...yellow, rr ... red, r ... green
+
+static void put_colorval(int val, t_op op)
 {
-	ft_putstr_fd(BLUE, 2);
+	if (op == sa || op == sb || op == ss)
+		ft_putstr_fd(BLUE, 2);
+	else if (op == pa || op == pb)
+		ft_putstr_fd(YELLOW, 2);
+	else if (op == ra || op == rb || op == rr)
+		ft_putstr_fd(GREEN, 2);
+	else if (op == rra || op == rrb || op == rrr)
+		ft_putstr_fd(RED, 2);
 	ft_putnbr_fd(val, 2);
 	ft_putstr_fd(RESET, 2);
 }
-
-//s ...top two, p ...top one, rr ... top one, r ... last one
 
 static t_stack	*put_first_two(t_stack **s, t_op op)
 {
@@ -25,7 +32,7 @@ static t_stack	*put_first_two(t_stack **s, t_op op)
 	s_ptr = *s;
 	if (op == sa || op == sb || op == ss || op == pa || op == pb
 		|| op == rra || op == rrb || op == rrr)
-		put_colorval(s_ptr->val);
+		put_colorval(s_ptr->val, op);
 	else
 		ft_putnbr_fd(s_ptr->val, 2);
 	if (s_ptr->next != *s)
@@ -33,8 +40,9 @@ static t_stack	*put_first_two(t_stack **s, t_op op)
 	s_ptr = s_ptr->next;
 	if (s_ptr == *s)
 		return (NULL);
-	if (op == sa || op == sb || op == ss)
-		put_colorval(s_ptr->val);
+	if (op == sa || op == sb || op == ss
+	||(s_ptr->next == *s && (op == ra || op == rb || op == rr)))
+		put_colorval(s_ptr->val, op);
 	else
 		ft_putnbr_fd(s_ptr->val, 2);
 	if (s_ptr->next != *s)
@@ -47,7 +55,7 @@ static t_stack	*put_first_two(t_stack **s, t_op op)
 static void	put_lastval(int val, t_op op)
 {
 	if (op == ra || op == rb || op == rr)
-		put_colorval(val);
+		put_colorval(val, op);
 	else
 		ft_putnbr_fd(val, 2);
 	return ;
