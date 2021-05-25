@@ -3,6 +3,8 @@
 static int	output_help(void)
 {
 	ft_putendl_fd("working oprions are v, c", 2);
+	ft_putendl_fd("v ... print stack after each operation.", 2);
+	ft_putendl_fd("c ... coloring operation and result.", 2);
 	ft_putendl_fd("please input atfer \"-\" to first argument", 2);
 	return (0);
 }
