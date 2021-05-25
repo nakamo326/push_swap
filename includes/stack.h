@@ -34,6 +34,7 @@ t_stack	*create_newelm(int value);
 t_stack	*add_top(t_stack **top, int value);
 t_stack	*add_bottom(t_stack **top, int value);
 void	print_stack(t_stack **top);
+void	print_color_stacks(t_stack **a, t_stack **b, t_op op);
 void	*free_stack(t_stack **top);
 int		get_stacklen(t_stack **top);
 

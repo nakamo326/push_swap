@@ -28,6 +28,7 @@ STCKSRC =	src/stack/create_stack.c \
 			src/stack/do_opration.c \
 			src/stack/get_stacklen.c \
 			src/stack/is_valid_op.c \
+			src/stack/print_color_stack.c \
 			src/stack/stack_utils.c \
 			src/stack/swap.c \
 			src/stack/push.c \

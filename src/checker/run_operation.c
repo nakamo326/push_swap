@@ -1,7 +1,5 @@
 #include "checker.h"
 
-//invalid operation
-
 static char	**get_list(char **list, bool *flag)
 {
 	int		ret;
@@ -53,7 +51,18 @@ static bool	normal_run(t_stack **a, t_stack **b)
 	return (true);
 }
 
-static bool	debug_run(t_stack **a, t_stack **b)
+static void	print_stacks(t_stack **a, t_stack **b, bool f, t_op op)
+{
+	if (f == false)
+	{
+		print_stack(a);
+		print_stack(b);
+	}
+	print_color_stacks(a, b, op);
+	return ;
+}
+
+static bool	debug_run(t_stack **a, t_stack **b, bool f)
 {
 	char	*line;
 	int		rc;
@@ -72,19 +81,18 @@ static bool	debug_run(t_stack **a, t_stack **b)
 			free(line);
 			return (false);
 		}
-		print_stack(a);
-		print_stack(b);
+		print_stacks(a, b, f, is_valid_op(line));
 	}
 	free(line);
 	return (true);
 }
 
-void	run_operation(t_stack **a, t_stack **b)
+void	run_operation(t_stack **a, t_stack **b, bool *op)
 {
 	bool	ret;
 
-	if (DEBUG)
-		ret = debug_run(a, b);
+	if (op[0] == true)
+		ret = debug_run(a, b, op[1]);
 	else
 		ret = normal_run(a, b);
 	if (ret == false)

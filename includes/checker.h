@@ -16,7 +16,7 @@ void	output_ko(void);
 void	output_ok(void);
 int		output_error(t_stack **a, t_stack **b);
 
-void	run_operation(t_stack **a, t_stack **b);
+void	run_operation(t_stack **a, t_stack **b, bool *op);
 void	check_result(t_stack **a, t_stack **b);
 int		get_option(char **argv, bool *op_flag);
 

@@ -34,18 +34,20 @@ int	main(int argc, char **argv)
 {
 	t_stack	**s[3];
 	int		i;
-	bool	op_flag[1];
+	bool	op_flag[2];
 
 
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
 	init_stack(&s[0], &s[1]);
 	i = get_option(argv, op_flag);
+	if (i == 0)
+		return (exit_free(s[0], s[1]));
 	s[2] = create_stack(argv, s[0], i);
 	if (s[2] == NULL)
 		return (output_error(s[0], s[1]));
 	s[0] = s[2];
-	run_operation(s[0], s[1]);
+	run_operation(s[0], s[1], op_flag);
 	check_result(s[0], s[1]);
 	return (exit_free(s[0], s[1]));
 }
