@@ -30,6 +30,8 @@ static t_stack	*put_first_two(t_stack **s, t_op op)
 	t_stack	*s_ptr;
 
 	s_ptr = *s;
+	if (s_ptr == NULL)
+		return (NULL);
 	if (op == sa || op == sb || op == ss || op == pa || op == pb
 		|| op == rra || op == rrb || op == rrr)
 		put_colorval(s_ptr->val, op);

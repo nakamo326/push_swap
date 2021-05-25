@@ -1,5 +1,4 @@
 #include "stack.h"
-//各operationが成功かどうかをboolで返す？
 
 static bool	swap_ent(t_op op, t_stack **a, t_stack **b)
 {

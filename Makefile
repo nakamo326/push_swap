@@ -5,6 +5,7 @@ INCLUDES = -I./includes -I.
 LIBFT = ./libft/libft.a
 
 CHKRSRC =	src/checker/check_result.c \
+			src/checker/clear_output.c \
 			src/checker/get_next_line.c \
 			src/checker/get_option.c \
 			src/checker/main.c \
@@ -24,7 +25,8 @@ P_SSRC =	src/push_swap/init_ps.c \
 			src/push_swap/solver_utils.c \
 			src/push_swap/sort_list.c
 
-STCKSRC =	src/stack/create_stack.c \
+STCKSRC =	src/stack/convert_op.c \
+			src/stack/create_stack.c \
 			src/stack/do_opration.c \
 			src/stack/get_stacklen.c \
 			src/stack/is_valid_op.c \

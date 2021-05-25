@@ -51,9 +51,11 @@ static bool	normal_run(t_stack **a, t_stack **b)
 	return (true);
 }
 
-static void	print_stacks(t_stack **a, t_stack **b, bool f, t_op op)
+static void	print_stacks(t_stack **a, t_stack **b, bool *f, t_op op)
 {
-	if (f == false)
+	if (f[2] == true)
+		clear_output(op);
+	if (f[1] == false)
 	{
 		print_stack(a);
 		print_stack(b);
@@ -62,7 +64,7 @@ static void	print_stacks(t_stack **a, t_stack **b, bool f, t_op op)
 	return ;
 }
 
-static bool	debug_run(t_stack **a, t_stack **b, bool f)
+static bool	debug_run(t_stack **a, t_stack **b, bool *f)
 {
 	char	*line;
 	int		rc;
@@ -70,6 +72,8 @@ static bool	debug_run(t_stack **a, t_stack **b, bool f)
 	line = malloc(2048);
 	if (line == NULL)
 		return (false);
+	if (f[2] == true)
+		output_current(a, b);
 	while (1)
 	{
 		rc = read(STDIN_FILENO, line, 2047);
@@ -92,7 +96,7 @@ void	run_operation(t_stack **a, t_stack **b, bool *op)
 	bool	ret;
 
 	if (op[0] == true)
-		ret = debug_run(a, b, op[1]);
+		ret = debug_run(a, b, op);
 	else
 		ret = normal_run(a, b);
 	if (ret == false)

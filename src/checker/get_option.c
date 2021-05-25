@@ -5,6 +5,7 @@ static int	output_help(void)
 	ft_putendl_fd("working oprions are v, c", 2);
 	ft_putendl_fd("v ... print stack after each operation.", 2);
 	ft_putendl_fd("c ... coloring operation and result.", 2);
+	ft_putendl_fd("s ... clear screen after each op.(need v option)", 2);
 	ft_putendl_fd("please input atfer \"-\" to first argument", 2);
 	return (0);
 }
@@ -14,6 +15,9 @@ int	get_option(char **argv, bool *op_flag)
 	int	num;
 	int	i;
 
+	op_flag[0] = false;
+	op_flag[1] = false;
+	op_flag[2] = false;
 	if (argv[1][0] != '-')
 		return (1);
 	num = 2;
@@ -24,6 +28,8 @@ int	get_option(char **argv, bool *op_flag)
 			op_flag[0] = true;
 		else if (argv[1][i] == 'c')
 			op_flag[1] = true;
+		else if (argv[1][i] == 's')
+			op_flag[2] = true;
 		else
 			return (output_help());
 		i++;
