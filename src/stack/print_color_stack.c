@@ -9,9 +9,7 @@
 #define WHITE	"\033[37m"
 #define RESET	"\033[m"
 
-//s ...blue, p ...yellow, rr ... red, r ... green
-
-static void put_colorval(int val, t_op op)
+static void	put_colorval(int val, t_op op)
 {
 	if (op == sa || op == sb || op == ss)
 		ft_putstr_fd(BLUE, 2);
@@ -43,7 +41,7 @@ static t_stack	*put_first_two(t_stack **s, t_op op)
 	if (s_ptr == *s)
 		return (NULL);
 	if (op == sa || op == sb || op == ss
-	||(s_ptr->next == *s && (op == ra || op == rb || op == rr)))
+		|| (s_ptr->next == *s && (op == ra || op == rb || op == rr)))
 		put_colorval(s_ptr->val, op);
 	else
 		ft_putnbr_fd(s_ptr->val, 2);
@@ -65,7 +63,7 @@ static void	put_lastval(int val, t_op op)
 
 static void	print_color_stack(t_stack **s, t_op op)
 {
-	t_stack *s_ptr;
+	t_stack	*s_ptr;
 
 	ft_putchar_fd('[', 2);
 	s_ptr = put_first_two(s, op);

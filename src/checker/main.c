@@ -36,7 +36,6 @@ int	main(int argc, char **argv)
 	int		i;
 	bool	op_flag[3];
 
-
 	if (argc <= 1)
 		exit(EXIT_FAILURE);
 	init_stack(&s[0], &s[1]);

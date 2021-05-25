@@ -7,7 +7,6 @@ void	output_current(t_stack **a, t_stack **b)
 	ft_putendl_fd("current stacks are ...", 2);
 	print_stack(a);
 	print_stack(b);
-
 }
 
 void	clear_output(t_op op)
