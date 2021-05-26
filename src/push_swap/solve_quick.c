@@ -49,6 +49,8 @@ static bool	check_val(t_ps *ps)
 		ps->i = ps->i + 2;
 		return (true);
 	}
+	else if (check_three_elm(ps))
+		return (true);
 	return (false);
 }
 

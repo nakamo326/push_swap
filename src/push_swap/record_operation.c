@@ -19,6 +19,7 @@ static bool	extend_answer(t_ps *ps)
 	new_ans[i] = err;
 	free(ps->ans);
 	ps->ans = new_ans;
+	ps->ans_size = new_size;
 	return (true);
 }
 

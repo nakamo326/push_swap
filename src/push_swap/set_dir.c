@@ -36,16 +36,10 @@ t_op	set_dir_a(t_ps *ps, int size)
 	i = 0;
 	sum[0] = 0;
 	while (i < size)
-	{
-		sum[0] += mark_list[i];
-		i++;
-	}
+		sum[0] += mark_list[i++];
 	sum[1] = 0;
 	while (i < ps->list_len)
-	{
-		sum[1] += mark_list[i];
-		i++;
-	}
+		sum[1] += mark_list[i++];
 	if (sum[0] <= sum[1])
 		return (rra);
 	return (ra);

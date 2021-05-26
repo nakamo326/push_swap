@@ -38,6 +38,7 @@ t_op	*solve_quick(t_ps *ps);
 void	set_first(t_ps *ps, int size);
 t_op	set_dir_a(t_ps *ps, int size);
 t_op	set_dir_b(t_stack **b, int m, int s_len);
+bool	check_three_elm(t_ps *ps);
 bool	merge_operation(t_ps *ps);
 t_op	*convert_rr(t_op *ans, int i);
 t_op	*convert_rrr(t_op *ans, int i);
