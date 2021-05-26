@@ -35,6 +35,7 @@ t_op	*solve_four(t_ps *ps);
 t_op	*solve_five(t_ps *ps);
 t_op	*solve_six(t_ps *ps);
 t_op	*solve_quick(t_ps *ps);
+void	set_first(t_ps *ps, int size);
 t_op	set_dir_a(t_ps *ps, int size);
 t_op	set_dir_b(t_stack **b, int m, int s_len);
 bool	merge_operation(t_ps *ps);
