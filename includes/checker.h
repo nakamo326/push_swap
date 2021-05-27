@@ -17,9 +17,11 @@ void	output_ok(bool f);
 int		output_error(t_stack **a, t_stack **b);
 
 void	run_operation(t_stack **a, t_stack **b, bool *op);
+void	print_stacks(t_stack **a, t_stack **b, bool *f, t_op op);
 void	clear_output(t_op op);
 void	output_current(t_stack **a, t_stack **b);
 void	check_result(t_stack **a, t_stack **b, bool f);
 int		get_option(char **argv, bool *op_flag);
+void	output_result(int i, bool *f);
 
 #endif

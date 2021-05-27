@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	**s[3];
 	int		i;
-	bool	op_flag[3];
+	bool	op_flag[4];
 
 	if (argc <= 1)
 		exit(EXIT_FAILURE);

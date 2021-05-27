@@ -5,11 +5,11 @@ INCLUDES = -I./includes -I.
 LIBFT = ./libft/libft.a
 
 CHKRSRC =	src/checker/check_result.c \
-			src/checker/clear_output.c \
 			src/checker/get_next_line.c \
 			src/checker/get_option.c \
 			src/checker/main.c \
 			src/checker/output_message.c \
+			src/checker/run_op_utils.c \
 			src/checker/run_operation.c
 
 P_SSRC =	src/push_swap/init_ps.c \

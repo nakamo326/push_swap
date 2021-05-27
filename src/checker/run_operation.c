@@ -1,17 +1,9 @@
 #include "checker.h"
 
-static void	print_stacks(t_stack **a, t_stack **b, bool *f, t_op op)
+static bool	free_return(char *line)
 {
-	if (f[2] == true)
-		clear_output(op);
-	if (f[1] == false)
-	{
-		print_stack(a);
-		print_stack(b);
-	}
-	else
-		print_color_stacks(a, b, op);
-	return ;
+	free(line);
+	return (false);
 }
 
 static char	**get_list(char **list, bool *flag)
@@ -45,7 +37,9 @@ static bool	debug_run(t_stack **a, t_stack **b, bool *f)
 {
 	char	*line;
 	int		ret;
+	int		i;
 
+	i = 0;
 	if (f[2] == true)
 		output_current(a, b);
 	while (1)
@@ -55,14 +49,14 @@ static bool	debug_run(t_stack **a, t_stack **b, bool *f)
 			break ;
 		if (ret == ERROR || is_valid_op(line) == err
 			|| !do_operation(line, a, b))
-		{
-			free(line);
-			return (false);
-		}
+			return (free_return(line));
 		print_stacks(a, b, f, is_valid_op(line));
 		free(line);
+		i++;
 	}
 	free(line);
+	if (f[3] == true)
+		output_result(i, f);
 	return (true);
 }
 
