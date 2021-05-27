@@ -1,5 +1,19 @@
 #include "checker.h"
 
+static void	print_stacks(t_stack **a, t_stack **b, bool *f, t_op op)
+{
+	if (f[2] == true)
+		clear_output(op);
+	if (f[1] == false)
+	{
+		print_stack(a);
+		print_stack(b);
+	}
+	else
+		print_color_stacks(a, b, op);
+	return ;
+}
+
 static char	**get_list(char **list, bool *flag)
 {
 	int		ret;
@@ -27,6 +41,31 @@ static char	**get_list(char **list, bool *flag)
 	return (list);
 }
 
+static bool	debug_run(t_stack **a, t_stack **b, bool *f)
+{
+	char	*line;
+	int		ret;
+
+	if (f[2] == true)
+		output_current(a, b);
+	while (1)
+	{
+		ret = get_next_line(STDIN_FILENO, &line);
+		if (ret == END && (line == NULL || *line == '\0'))
+			break ;
+		if (ret == ERROR || is_valid_op(line) == err
+			|| !do_operation(line, a, b))
+		{
+			free(line);
+			return (false);
+		}
+		print_stacks(a, b, f, is_valid_op(line));
+		free(line);
+	}
+	free(line);
+	return (true);
+}
+
 static bool	normal_run(t_stack **a, t_stack **b)
 {
 	int		i;
@@ -48,46 +87,6 @@ static bool	normal_run(t_stack **a, t_stack **b)
 		i++;
 	}
 	ft_free_split(list);
-	return (true);
-}
-
-static void	print_stacks(t_stack **a, t_stack **b, bool *f, t_op op)
-{
-	if (f[2] == true)
-		clear_output(op);
-	if (f[1] == false)
-	{
-		print_stack(a);
-		print_stack(b);
-	}
-	print_color_stacks(a, b, op);
-	return ;
-}
-
-static bool	debug_run(t_stack **a, t_stack **b, bool *f)
-{
-	char	*line;
-	int		rc;
-
-	line = malloc(2048);
-	if (line == NULL)
-		return (false);
-	if (f[2] == true)
-		output_current(a, b);
-	while (1)
-	{
-		rc = read(STDIN_FILENO, line, 2047);
-		line[rc] = '\0';
-		if (rc == 0)
-			break ;
-		if (!do_operation(line, a, b))
-		{
-			free(line);
-			return (false);
-		}
-		print_stacks(a, b, f, is_valid_op(line));
-	}
-	free(line);
 	return (true);
 }
 
