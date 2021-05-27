@@ -50,5 +50,7 @@ int	get_option(char **argv, bool *op_flag)
 			return (output_help());
 		i++;
 	}
+	if (argv[2] == NULL)
+		return (0);
 	return (num);
 }
