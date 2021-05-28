@@ -2,13 +2,20 @@
 
 static int	output_help(void)
 {
-	ft_putendl_fd("working oprions are v, c, s, r", 2);
+	ft_putendl_fd("working oprions are h, v, c, s, r", 2);
+	ft_putendl_fd("please input atfer \"--\" to first argument", 2);
+	ft_putendl_fd("h ... print help.", 2);
 	ft_putendl_fd("v ... print stack after each operation.", 2);
 	ft_putendl_fd("c ... coloring operation and result.", 2);
 	ft_putendl_fd("s ... clear screen after each op.(need v option)", 2);
 	ft_putendl_fd("r ... print score result", 2);
-	ft_putendl_fd("please input atfer \"--\" to first argument", 2);
 	return (0);
+}
+
+static int	option_error(void)
+{
+	ft_putendl_fd("Invaild option!", 2);
+	return (output_help());
 }
 
 static void	init_flag(bool *f)
@@ -28,13 +35,11 @@ static void	init_flag(bool *f)
 
 int	get_option(char **argv, bool *op_flag)
 {
-	int	num;
 	int	i;
 
 	init_flag(op_flag);
 	if (argv[1][0] != '-' || argv[1][1] != '-')
 		return (1);
-	num = 2;
 	i = 2;
 	while (argv[1][i] != '\0')
 	{
@@ -46,11 +51,13 @@ int	get_option(char **argv, bool *op_flag)
 			op_flag[2] = true;
 		else if (argv[1][i] == 'r')
 			op_flag[3] = true;
-		else
+		else if (argv[1][i] == 'h')
 			return (output_help());
+		else
+			return (option_error());
 		i++;
 	}
 	if (argv[2] == NULL)
 		return (0);
-	return (num);
+	return (2);
 }

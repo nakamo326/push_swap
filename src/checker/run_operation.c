@@ -16,7 +16,7 @@ static int	get_next_op(t_op *op)
 	if (ret == END && (line == NULL || *line == '\0'))
 		return (free_return(line, END));
 	if (ret == ERROR || !is_valid_op(line))
-		free_return(line, ERROR);
+		return (free_return(line, ERROR));
 	*op = is_valid_op(line);
 	return (free_return(line, ret));
 }
