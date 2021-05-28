@@ -75,7 +75,7 @@ static void	sort_first_half(t_ps *ps, int start, int end)
 		else
 			ps->ans = record_do(rb, ps);
 	}
-	sort_first_half(ps, start, start + m);
+	sort_first_half(ps, ps->i, start + m);
 	sort_second_half(ps, end);
 }
 
