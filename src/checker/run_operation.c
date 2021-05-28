@@ -16,7 +16,10 @@ static char	**get_list(char **list, bool *flag)
 	{
 		ret = get_next_line(STDIN_FILENO, &line);
 		if (ret == END && (line == NULL || *line == '\0'))
+		{
+			free(line);
 			break ;
+		}
 		if (ret == ERROR || is_valid_op(line) == err)
 		{
 			*flag = false;
@@ -28,7 +31,6 @@ static char	**get_list(char **list, bool *flag)
 		if (list == NULL)
 			return (NULL);
 	}
-	free(line);
 	*flag = true;
 	return (list);
 }
@@ -47,8 +49,7 @@ static bool	debug_run(t_stack **a, t_stack **b, bool *f)
 		ret = get_next_line(STDIN_FILENO, &line);
 		if (ret == END && (line == NULL || *line == '\0'))
 			break ;
-		if (ret == ERROR || is_valid_op(line) == err
-			|| !do_operation(line, a, b))
+		if (ret == ERROR || !is_valid_op(line) || !do_operation(line, a, b))
 			return (free_return(line));
 		print_stacks(a, b, f, is_valid_op(line));
 		free(line);
