@@ -32,7 +32,7 @@ int	get_option(char **argv, bool *op_flag)
 	int	i;
 
 	init_flag(op_flag);
-	if (argv[1][0] != '-' && argv[1][1] != '-')
+	if (argv[1][0] != '-' || argv[1][1] != '-')
 		return (1);
 	num = 2;
 	i = 2;

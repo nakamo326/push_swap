@@ -40,11 +40,8 @@ static bool	add_answer(t_ps *ps, t_op op)
 
 t_op	*record_do(t_op op, t_ps *ps)
 {
-	char	*str;
-
-	str = convert_op(op);
 	if (!add_answer(ps, op))
 		return (NULL);
-	do_operation(str, ps->a, ps->b);
+	do_operation(op, ps->a, ps->b);
 	return (ps->ans);
 }

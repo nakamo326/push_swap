@@ -34,11 +34,8 @@ static bool	rev_rotate_ent(t_op op, t_stack **a, t_stack **b)
 	return (rev_rotate(a) && rev_rotate(b));
 }
 
-bool	do_operation(char *line, t_stack **a, t_stack **b)
+bool	do_operation(t_op op, t_stack **a, t_stack **b)
 {
-	t_op	op;
-
-	op = is_valid_op(line);
 	if (op == sa || op == sb || op == ss)
 		return (swap_ent(op, a, b));
 	else if (op == pa || op == pb)
