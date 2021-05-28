@@ -32,7 +32,7 @@ static bool	add_answer(t_ps *ps, t_op op)
 		i++;
 	ps->ans[i] = op;
 	ps->ans[i + 1] = err;
-	if (i + 1 == ps->ans_size)
+	if (i + 1 == ps->ans_size - 1)
 		if (!extend_answer(ps))
 			return (false);
 	return (true);
