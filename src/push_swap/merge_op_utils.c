@@ -37,3 +37,27 @@ t_op	*delete_pp(t_op *ans, int i)
 	ans[i] = err;
 	return (ans);
 }
+
+t_op	*merge_spps(t_op *ans, int *index)
+{
+	int	i;
+
+	i = *index;
+	ans[i] = pb;
+	ans[i + 1] = pb;
+	if (ans[i + 3] == sa)
+	{
+		ans[i + 2] = ss;
+		i += 3;
+	}
+	else
+		i += 2;
+	*index = i - 1;
+	while (ans[i + 1] != err)
+	{
+		ans[i] = ans[i + 1];
+		i++;
+	}
+	ans[i] = err;
+	return (ans);
+}

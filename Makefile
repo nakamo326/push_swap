@@ -13,6 +13,7 @@ CHKRSRC =	src/checker/check_result.c \
 			src/checker/run_operation.c
 
 P_SSRC =	src/push_swap/init_ps.c \
+			src/push_swap/is_merge.c \
 			src/push_swap/main.c \
 			src/push_swap/merge_op_utils.c \
 			src/push_swap/merge_operation.c \

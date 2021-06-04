@@ -38,9 +38,14 @@ t_op	*solve_quick(t_ps *ps);
 void	set_first(t_ps *ps, int size);
 bool	check_three_elm(t_ps *ps);
 bool	merge_operation(t_ps *ps);
+bool	is_r_combo(t_op op, t_op next);
+bool	is_rr_combo(t_op op, t_op next);
+bool	is_able_delete(t_op op, t_op next);
+bool	is_spps_combo(t_op *ans, int i);
 t_op	*convert_rr(t_op *ans, int i);
 t_op	*convert_rrr(t_op *ans, int i);
 t_op	*delete_pp(t_op *ans, int i);
+t_op	*merge_spps(t_op *ans, int *index);
 void	output_answer(t_op *ans);
 
 #endif
