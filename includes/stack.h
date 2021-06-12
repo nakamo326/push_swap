@@ -6,6 +6,7 @@
 # include <stdbool.h>
 # include <limits.h>
 # include "./libft/libft.h"
+
 typedef struct s_stack
 {
 	struct s_stack	*prev;
