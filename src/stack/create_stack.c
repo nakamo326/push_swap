@@ -91,6 +91,8 @@ t_stack	**create_stack(char **argv, t_stack **top, int i)
 
 	while (argv[i] != NULL)
 	{
+		if (argv[i][0] == '\0')
+			return (NULL);
 		if (is_able_to_split(argv[i]))
 		{
 			top = add_split(argv[i], top);
